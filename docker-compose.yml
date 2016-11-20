@@ -57,7 +57,7 @@ services:
     php7console:
         build: php7
         container_name: php7console 
-        image: maxlab/php7
+        image: maxlab/php7console
         restart: always        
         volumes_from:
             - php7 

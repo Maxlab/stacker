@@ -9,7 +9,7 @@ Stacker - Symfony docker starter kit for development
 ===
 [![Build Status](https://travis-ci.org/Maxlab/stacker.svg?branch=master)](https://travis-ci.org/Maxlab/stacker)
 
-Video presentation - https://youtu.be/owE3Et6PaQM
+Video presentation - (in progress)
 
 Quickly start of developing locally with Nginx, PHP7, Mysql, Pgsql, Mailcatcher and Redis.
 No e-mail is send externally, everything is catched by mailcatcher.
