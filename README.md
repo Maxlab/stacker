@@ -1,3 +1,9 @@
+<!--
+  Title: Stacker - Symfony docker starter kit for development!
+  Description: Quickly start of developing locally with Nginx, PHP7, Mysql, Pgsql, Mailcatcher and Redis.
+               No e-mail is send externally, everything is catched by mailcatcher.
+  Author: maxlab
+  -->
 
 Stacker - Symfony docker starter kit for development
 ===
