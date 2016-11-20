@@ -1,0 +1,4 @@
+
+docker-compose restart ${DEV_COMMAND_OPTIONS};
+exit $?;
+

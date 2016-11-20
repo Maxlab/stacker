@@ -1,0 +1,73 @@
+#!/bin/bash
+
+init() {
+
+    DEV_SELF=$(basename $0);
+
+    DEV_DIR=$(dirname $0);
+    DEV_WORKDIR=$(dirname ${DEV_DIR});
+    DEV_PROJECT=$(basename ${DEV_WORKDIR});
+    DEV_USERDIR=${PWD};
+
+    DEV_COMMANDDIR=${DEV_DIR}/dev_command;
+
+    DEV_WORKSPACE="`echo ${DEV_WORKDIR}/workspace | sed -se 's/\\//\\\\\//g'`";
+    DEV_DATADIR=`echo ${DEV_USERDIR} | sed -se "s/${DEV_WORKSPACE}//"`;
+
+    DEV_COMMAND=$1;
+    shift;
+    DEV_COMMAND_OPTIONS=`echo "$*" | sed -se "s/${DEV_WORKSPACE}/\/data/" -se 's/\([\$\\\(\\\)<>]\)/\\\\\1/g'`;
+
+    if [ "${DEV_DATADIR}" == "${DEV_USERDIR}" ]; then
+        # Not in WORKSPACE
+        DEV_DATADIR='';
+    else
+        DEV_DATADIR="/data${DEV_DATADIR}";
+    fi
+
+    # Change to command directory
+    # This is so all docker-compose commands work out of the box
+    cd ${DEV_COMMANDDIR};
+
+    # Check if command exists and is executable
+    DEV_EXISTS=false;
+    if [ -n "${DEV_COMMAND}" ] && [ -f "${DEV_COMMAND}" ]; then
+        DEV_EXISTS=true;
+    fi
+}
+
+exec() {
+    # Load command
+    # Can exit if implemented itself
+    . ./${DEV_COMMAND};
+
+    if [ -z "${DEV_SERVICE}" ]; then
+        exit 1;
+    fi
+
+    if [ -n "${DEV_USER}" ]; then
+        DEV_USER="-u ${DEV_USER} ";
+    fi
+
+    # Execute command
+    if [ "$DEV_COMMAND" == "console" ]; then
+        eval docker exec -ti -u www-data ${DEV_USER}${DEV_SERVICE} ${DEV_CMD};  
+    else
+        eval docker-compose run --rm ${DEV_USER}${DEV_SERVICE} ${DEV_CMD};
+    fi
+
+    exit $?;
+}
+
+usage() {
+    echo "Usage ${DEV_SELF} ["`ls`"]";
+    exit 1;
+}
+
+main() {
+    init $@;
+
+    ${DEV_EXISTS} && exec || usage;
+}
+
+main $@;

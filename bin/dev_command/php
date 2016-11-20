@@ -1,0 +1,10 @@
+
+DEV_USER=www-data;
+DEV_SERVICE=php7;
+
+DEV_CMD='php';
+if [ -n "${DEV_DATADIR}" ]; then
+    DEV_CMD="cd ${DEV_DATADIR} && php";
+fi
+
+DEV_CMD='/bin/bash -c "'"${DEV_CMD} ${DEV_COMMAND_OPTIONS}"'"';

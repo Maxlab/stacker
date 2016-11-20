@@ -1,0 +1,5 @@
+/workspace/*
+!workspace/test
+/mysql
+.idea/
+pgsql/

@@ -1,0 +1,3 @@
+
+docker-compose logs ${DEV_COMMAND_OPTIONS};
+exit $?;

@@ -1,0 +1,26 @@
+server {
+    listen 80;
+    server_name .dev;
+
+    set $customer "default";
+    set $project "default";
+    set $store "";
+
+    include "sites-available/vhost/content7";
+}
+
+server {
+    listen 443;
+    server_name .dev;
+
+    ssl on;
+    ssl_certificate certs/server.crt;
+    ssl_certificate_key certs/server.key;
+
+    set $customer "default";
+    set $project "default";
+    set $store "";
+
+    include "sites-available/vhost/content7";
+}
+

@@ -1,0 +1,3 @@
+
+docker-compose rm -vf ${DEV_COMMAND_OPTIONS};
+exit $?;

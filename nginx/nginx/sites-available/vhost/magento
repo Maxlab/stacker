@@ -1,0 +1,27 @@
+
+set $isMage "false";
+
+if ( -e $htdocs/app/Mage.php ) {
+    set $isMage "true";
+}
+
+location /media {
+    allow all;
+}
+location /skin {
+    if ( !-e $request_filename ) {
+        rewrite ^/skin/m/([^/]+)(/.*.(js|css))$ /lib/minify/m.php?f=$2&d=$1 last;
+        break;
+    }
+    allow all;
+}
+location /app {
+    if ( $isMage = "true" ) {
+        return 403;
+    }
+    if ( !-e $request_filename ) {
+        rewrite ^(.*)$ index.php last;
+        break;
+    }
+}
+

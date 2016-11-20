@@ -1,0 +1,4 @@
+
+docker-compose build ${DEV_COMMAND_OPTIONS};
+exit $?;
+

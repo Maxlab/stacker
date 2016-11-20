@@ -1,0 +1,64 @@
+version: '2'
+services:
+    web:
+        build: nginx
+        image: maxlab/nginx
+        restart: always
+        depends_on:
+            - php7
+            - db
+            - pgsql
+            - redis
+            - mailcatcher
+        volumes_from:
+            - php7
+        links:
+            - php7:fpm7
+            - mailcatcher
+        ports:
+            - 80:80
+            - 443:433
+    db:
+        image: mysql:5.7
+        ports:
+            - 3307:3306
+        volumes:
+            - ./mysql:/var/lib/mysql
+        restart: always
+        env_file: conf/mysql
+    pgsql:
+        image: postgres:9.6
+        ports:
+            - 5433:5432
+        volumes:
+            - ./pgsql:/var/lib/postgresql
+        restart: always
+        env_file: conf/pgsql
+    redis:
+        image: redis:3.0
+        restart: always
+        ports:
+            - 6379:6379
+    mailcatcher:
+        image: schickling/mailcatcher
+        restart: always
+    php7:
+        build: php7xdebug
+        image: maxlab/php7xdebug
+        restart: always
+        volumes:
+            - ./workspace:/data
+            - ${HOME}/.ssh/id_rsa:/data/.ssh/id_rsa:ro
+        links:
+            - pgsql
+            - db
+            - mailcatcher
+            - redis
+    php7console:
+        build: php7
+        container_name: php7console 
+        image: maxlab/php7
+        restart: always        
+        volumes_from:
+            - php7 
+        tty: true

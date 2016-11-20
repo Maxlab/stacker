@@ -1,0 +1,17 @@
+server {
+  listen 80;
+  server_name *.magento2.dev;
+
+  set $customer "default";
+  set $project "default";
+
+  if ( $host ~ "^([^\.]+)\.([^\.]+)\.magento2\.dev$"  ) {
+     set $customer "$1";
+     set $project "$2";
+  }
+
+  set $MAGE_ROOT /data/$customer/$project/;
+  set $MAGE_MODE developer;
+
+  include sites-available/vhost/magento2.content;
+}

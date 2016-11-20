@@ -1,0 +1,4 @@
+
+docker-compose start ${DEV_COMMAND_OPTIONS};
+exit $?;
+
