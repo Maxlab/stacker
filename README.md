@@ -27,7 +27,7 @@ Installation
 - Install [docker](https://docs.docker.com/)
 - Install docker [compose](https://docs.docker.com/compose/install/) >1.3.1
 - Clone this project 
-  `git clone git@github.com:Maxlab/docker-compose-development.git development`
+  `git clone git@github.com:Maxlab/stacker.git development`
 
 
 Before
@@ -78,19 +78,7 @@ Console
 
 If you want run a console to run php commands.
 
-- `./bin/dev console` - PHP7
-- `./bin/dev php` - PHP7
-
-Cron
----
-
-If you use cronjobs in your app, you can add them on your host machine.
-`docker ps | grep development_phpfpm && docker exec development_phpfpm_1 su app [YOURCOMMANDHERE]`
-
-For instance, if you must run a Magento cronjob.
-`docker ps | grep development_phpfpm && docker exec development_phpfpm_1 su app magento/project/htdocs/cron.sh`
-
-You can add these to your local cron.
+- `./bin/dev console` - PHP7, gem, npm, bower, gulp, composer
 
 
 How to
