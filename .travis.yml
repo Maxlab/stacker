@@ -7,8 +7,8 @@ services:
   - docker
 
 before_install:
-  - apt-get update
-  - apt-get install docker-engine
+  - sudo apt-get update
+  - sudo apt-get install docker-engine
   - curl -L https://github.com/docker/compose/releases/download/1.8.0/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
