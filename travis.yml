@@ -1,0 +1,20 @@
+sudo: required
+
+env:
+  DOCKER_COMPOSE_VERSION: 1.8.0
+
+services:
+  - docker
+
+before_install:
+  - curl -L https://github.com/docker/compose/releases/download/1.8.0/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+  - docker-compose -v
+  - docker -v
+  - cat docker-compose.yml
+
+script:
+  - docker-compose build
+  - docker-compose up -d
+  - docker-compose ps

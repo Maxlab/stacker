@@ -7,6 +7,7 @@
 
 Stacker - Symfony docker starter kit for development
 ===
+[![Build Status](https://travis-ci.org/Maxlab/stacker.svg?branch=master)](https://travis-ci.org/Maxlab/stacker)
 
 Video presentation - https://youtu.be/owE3Et6PaQM
 
