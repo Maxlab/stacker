@@ -75,12 +75,10 @@ For Symfony2
 Database
 ---
 
-Set the desired root password in the conf/mysql section.
-To manage database run `./bin/dev myroot`
-
-You can access the database in your app use `db` as hostname.
-
-Files will be saved in the mysql directory so it will be saved after destroying or recreating the containers.
+- Set the desired root password in the conf/mysql section.
+    To manage database run `./bin/dev myroot`
+- You can access the database in your app use `db` as hostname.
+- Files will be saved in the mysql directory so it will be saved after destroying or recreating the containers.
 
 
 Redis
