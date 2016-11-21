@@ -75,7 +75,7 @@ RUN docker-php-ext-install intl
 ENV PHP_EXTRA_CONFIGURE_ARGS --enable-fpm --with-fpm-user=www-data --with-fpm-group=www-data
 
 RUN usermod -u 1000 -d /data -s /bin/bash www-data
-RUN mkdir /data && chmod -R 775 /data && find /data -type d -exec chmod 775 {} \;
+RUN mkdir /data && chmod -R 644 /data && find /data -type d -exec chmod 755 {} \;
 
 RUN apt-get update && apt-get install -y \
 #RUN apt-get update --fix-missing && apt-get install -y \
@@ -97,7 +97,7 @@ RUN apt-get update && apt-get install -y \
 RUN pecl install xdebug \
     && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)\n" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_autostart=1" >> /usr/local/etc/php/conf.d/xdebug.ini \
+    && echo "xdebug.remote_autostart=0" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_connect_back=1" >> /usr/local/etc/php/conf.d/xdebug.ini \
 
 COPY etc/php-fpm.conf /usr/local/etc/
