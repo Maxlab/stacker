@@ -37,15 +37,11 @@ RUN apt-get install -y libmcrypt-dev
 RUN docker-php-ext-install mcrypt
 
 # Install PDO
-# RUN apt-get install -y freetds-dev php5-sybase
-# RUN docker-php-ext-install pdo 
 RUN docker-php-ext-install pdo_mysql
-# RUN docker-php-ext-install pdo_oci
-# RUN docker-php-ext-install pdo_odbc
 RUN apt-get install -y libpq-dev
 RUN docker-php-ext-install pdo_pgsql
-# RUN apt-get install -y libsqlite3-dev
-# RUN docker-php-ext-install pdo_sqlite
+RUN apt-get install -y libsqlite3-dev
+RUN docker-php-ext-install pdo_sqlite
 
 # Install phpredis
 RUN pecl install -o -f redis \
@@ -58,10 +54,6 @@ RUN docker-php-ext-install xsl
 
 # Install xmlrpc
 RUN docker-php-ext-install xmlrpc
-
-# Install mongo
-#RUN pecl install mongodb-beta
-#RUN echo "extension=mongo.so" > /usr/local/etc/php/conf.d/mongo.ini
 
 # Install ftp
 RUN docker-php-ext-install ftp
@@ -81,8 +73,7 @@ RUN groupadd -r node && \
     usermod -G www-data -a node
 RUN mkdir /data && chmod -R 644 /data && find /data -type d -exec chmod 755 {} \;
 
-#RUN apt-get update --fix-missing && apt-get install -y \
-RUN apt-get update && apt-get install -y \
+RUN apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
@@ -96,9 +87,14 @@ RUN apt-get update && apt-get install -y \
         wget git vim ruby ruby-dev libcurl4-openssl-dev \
         nodejs \
         nodejs-legacy \
-        npm \
-    && apt-get clean \    
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+        npm
+
+# Install Zip
+RUN apt-get install -y zlib1g-dev \
+    && docker-php-ext-install zip
+
+# Clean apt
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install Bower & Grunt
 RUN npm install -g bower gulp uglify-js uglifycss && \
