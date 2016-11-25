@@ -118,8 +118,8 @@ How to
     Now all your Symphony projects is available from the browser.
 
 - How to contact the Staker from anywhere in console?
-    - $ echo 'alias stacker="/<your_path_to_stacker_folder>/bin/dev $@"' >> ~/.bashrc
-    - $ alias stacker="/<your_path_to_stacker_folder>/bin/dev $@"
+    - $ echo 'alias stacker="/your_path/to_stacker_folder/bin/dev $@"' >> ~/.bashrc
+    - $ alias stacker="/your_path_to/stacker_folder/bin/dev $@"
     - $ stacker
 
 
