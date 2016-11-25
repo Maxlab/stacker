@@ -11,6 +11,7 @@ Stacker - Symfony docker starter kit for development
 
 - 1 video presentation - https://youtu.be/qVqzYMczuwM (RU)
 - 2 video phpStorm + xDebug + Stacker = profit! - https://youtu.be/RYnRamdZJ-Q (RU)
+- 3 video stacker console, composer, gem, npm and etc. - https://youtu.be/WBFMs35ucfk (RU)
 
 Quickly start of developing locally with Nginx, PHP7, Mysql, Pgsql, Mailcatcher and Redis.
 No e-mail is send externally, everything is catched by mailcatcher.
