@@ -116,7 +116,10 @@ How to
     remove a directory ./workspace and rename your link to workspace - that's all! 
     Now all your Symphony projects is available from the browser.
 
-
+- How to contact the Staker from anywhere in console?
+    - $ echo 'alias stacker="/<your_path_to_stacker_folder>/bin/dev $@"' >> ~/.bashrc
+    - $ alias stacker="/<your_path_to_stacker_folder>/bin/dev $@"
+    - $ stacker
 
 
 
