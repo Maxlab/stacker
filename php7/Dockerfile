@@ -112,6 +112,7 @@ RUN ln -s /root/.composer/vendor/bin/phpunit /usr/bin/phpunit
 
 COPY etc/php-fpm.conf /usr/local/etc/
 COPY etc/php.ini /usr/local/etc/php/
+COPY etc/.bashrc /etc/bash.bashrc
 RUN chmod ugo+rX -R /usr/local/etc/php
 
 WORKDIR /data

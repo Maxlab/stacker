@@ -34,7 +34,7 @@ Installation
 ---
 
 - Install [docker](https://docs.docker.com/)
-- Install docker [compose](https://docs.docker.com/compose/install/) >1.3.1
+- Install docker [compose](https://docs.docker.com/compose/install/) > 1.8.0
 - Clone this project 
   `git clone git@github.com:Maxlab/stacker.git development`
 
