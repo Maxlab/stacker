@@ -4,12 +4,16 @@ services:
         build: nginx
         image: maxlab/nginx
         restart: always
+        env_file: ./conf/dev.env
         depends_on:
             - php7
             - db
             - pgsql
             - redis
             - mailcatcher
+        volumes:
+            - ./nginx/nginx:/etc/nginx
+            - ./nginx/nginx/sites-available/vhost/symfony.env.tpl:/tmp/nginx/symfony.env.tpl
         volumes_from:
             - php7
         links:
@@ -18,22 +22,23 @@ services:
         ports:
             - 80:80
             - 443:433
+        command: /bin/bash -c "envsubst '$$SYMFONY_ENV' < /tmp/nginx/symfony.env.tpl > /etc/nginx/sites-available/vhost/symfony && nginx"
     db:
         image: mysql:5.7
+        env_file: ./conf/dev.env
         ports:
             - 3307:3306
         volumes:
             - ./mysql:/var/lib/mysql
         restart: always
-        env_file: conf/mysql
     pgsql:
         image: postgres:9.6
+        env_file: ./conf/dev.env
         ports:
             - 5433:5432
         volumes:
             - ./pgsql:/var/lib/postgresql
         restart: always
-        env_file: conf/pgsql
     redis:
         image: redis:3.0
         restart: always
@@ -45,6 +50,7 @@ services:
     php7:
         build: php7xdebug
         image: maxlab/php7xdebug
+        env_file: ./conf/dev.env        
         restart: always
         volumes:
             - ./workspace:/data
@@ -58,6 +64,7 @@ services:
         build: php7
         container_name: php7console 
         image: maxlab/php7console
+        env_file: ./conf/dev.env
         restart: always        
         volumes_from:
             - php7 
