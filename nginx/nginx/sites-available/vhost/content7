@@ -26,36 +26,3 @@ gzip_types text/css application/x-javascript image/svg+xml;
 location ~ ^/?\. {
     deny all;
 }
-
-include sites-available/vhost/magento;
-
-location / {
-    if ( !-e $request_filename ) {
-        rewrite ^(.*)$ index.php last;
-        break;
-    }
-
-    allow all;
-}
-
-location ~ \.php$ {
-    include fastcgi_params;
-    fastcgi_index index.php;
-
-    set $script_name $fastcgi_script_name;
-    if ( !-e $request_filename ) {
-        set $script_name "/index.php";
-    }
-
-    fastcgi_param SCRIPT_FILENAME  $document_root$script_name;
-    fastcgi_param IS_DEVELOPMENT_MODE "yes";
-    fastcgi_param MAGE_IS_DEVELOPER_MODE "yes";
-    fastcgi_param MAGE_RUN_CODE $store;
-
-    if ( -f $document_root$script_name ) {
-         fastcgi_pass fastcgi7_backend;
-    }
-
-    allow all;
-}
-

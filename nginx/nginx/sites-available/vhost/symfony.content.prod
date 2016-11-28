@@ -1,0 +1,29 @@
+root $SYMFONY_ROOT/web;
+
+index app.php;
+autoindex off;
+charset off;
+
+add_header 'X-Content-Type-Options' 'nosniff';
+add_header 'X-XSS-Protection' '1; mode=block';
+
+#PROD
+location / {
+    # try to serve file directly, fallback to app.php
+    try_files $uri /app.php$is_args$args;
+}
+location ~ ^/app\.php(/|$) {
+    fastcgi_pass fastcgi7_backend;
+    fastcgi_split_path_info ^(.+\.php)(/.*)$;
+    include fastcgi_params;
+    fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+    fastcgi_param DOCUMENT_ROOT $realpath_root;
+    internal;
+}
+
+# return 404 for all other php files not matching the front controller
+# this prevents access to other php files you don't want to be accessible.
+location ~ \.php$ {
+  return 404;
+}
+

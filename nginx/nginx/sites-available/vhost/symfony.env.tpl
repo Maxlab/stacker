@@ -12,5 +12,5 @@ server {
 
     set $SYMFONY_ROOT /data/$customer/$project;
 
-    include sites-available/vhost/symfony.content.dev;
+    include sites-available/vhost/symfony.content.$SYMFONY_ENV;
 }
