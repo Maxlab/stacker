@@ -1,0 +1,19 @@
+{
+    "name": "maxlab/stacker",
+    "type": "shell",
+    "description": "Stacker - Symfony docker starter kit for development. Quickly start of developing locally with Nginx, PHP7, Mysql, Pgsql, Mailcatcher and Redis etc.",
+    "keywords": ["lamp","rad","symfony","starter", "kit", "development", "wildcards","nginx","local server", "php7", "postgresql"],
+    "homepage": "https://github.com/Maxlab/stacker",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nikolai Stepanov",
+            "email": "nstepanovdev@gmail.com",
+            "homepage": "https://github.com/Maxlab",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0"
+    }
+}
