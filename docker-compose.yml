@@ -1,5 +1,33 @@
 version: '2'
 services:
+#    apache:
+#        image: bitnami/apache:latest
+#        ports:
+#            - 81:80
+#            - 444:443
+#        volumes:
+#            - ./apache/apache:/bitnami/apache
+#            - ./workspace:/app
+
+
+    php5apache:
+        build: php5apache
+        image: maxlab/php5apache
+        volumes:
+            - ./php5apache/apache2:/etc/apache2
+        env_file: ./conf/dev.env
+        volumes_from:
+            - php7
+        depends_on:
+            - db
+            - redis
+            - mailcatcher
+        links:
+            - php7:fpm7
+            - mailcatcher
+        ports:
+            - 81:80
+            - 444:443
     web:
         build: nginx
         image: maxlab/nginx
@@ -60,6 +88,7 @@ services:
             - db
             - mailcatcher
             - redis
+          #  - elasticsearch
     php7console:
         build: php7
         container_name: php7console 
@@ -69,3 +98,9 @@ services:
         volumes_from:
             - php7 
         tty: true
+    #elasticsearch:
+     #   image: elasticsearch:5
+      #  volumes:
+       #     - ./elasticsearch:/usr/share/elasticsearch/data
+    #    ports:
+     #       - "9200:9200"

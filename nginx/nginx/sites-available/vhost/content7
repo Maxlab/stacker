@@ -17,12 +17,6 @@ if ( -e /data/$customer/$project/public ) {
     set $htdocs "public";
 }
 
-root /data/$customer/$project/$htdocs;
-
-index index.php index.html;
-
-gzip_types text/css application/x-javascript image/svg+xml;
-
 location ~ ^/?\. {
     deny all;
 }
