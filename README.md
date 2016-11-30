@@ -32,6 +32,7 @@ Currently the next images are used. Trying to rely on official images as much as
 - php7  -> need for container, includes gem, npm, bower, gulp, composer 
 - redis -> redis:3.0
 
+If you need php5 and apache2 legacy-a2-php5-v.* branch for you!
 
 Installation
 ---
