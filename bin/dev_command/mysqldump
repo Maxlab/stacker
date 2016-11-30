@@ -1,4 +1,3 @@
-docker exec -i stacker_db_1 mysql -uroot -proot ${DEV_COMMAND_OPTIONS}
 
-#docker-compose exec db bash -c 'mysqldump -uroot -p${MYSQL_ROOT_PASSWORD} ${DEV_COMMAND_OPTIONS}'
+docker-compose exec db bash -c 'mysqldump -uroot -p${MYSQL_ROOT_PASSWORD} ${DEV_COMMAND_OPTIONS}'
 exit $?;
