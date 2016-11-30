@@ -2,10 +2,10 @@ FROM php:5.6-apache
 
 MAINTAINER Stepanov Nikolai <nstepanovdev@gmail.com>
 
-#ENV APACHE_RUN_USER www-data
-#ENV APACHE_RUN_GROUP www-data
-#ENV dir /data
-#ENV HOME /data
+ENV APACHE_RUN_USER www-data
+ENV APACHE_RUN_GROUP www-data
+ENV dir /data
+ENV HOME /data
 
 # init
 RUN apt-get update \
@@ -92,7 +92,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 CMD "/bin/bash"
 RUN usermod -u 1000 -d /data -s /bin/bash www-data
-RUN rm -rvf /data && mkdir /data && chmod -R 775 /data && find /data -type d -exec chmod 775 {} \;
+RUN rm -rvf /data && mkdir /data && chmod -R 777 /data && find /data -type d -exec chmod 777 {} \;
 
 WORKDIR /data
 
