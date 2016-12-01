@@ -29,7 +29,8 @@ services:
         ports:
             - 3307:3306
         volumes:
-            - ./mysql:/var/lib/mysql
+            - ./mysql/conf:/etc/mysql/conf.d
+            - ./mysql/mysql:/var/lib/mysql
         restart: always
     pgsql:
         image: postgres:9.6
@@ -60,6 +61,7 @@ services:
             - db
             - mailcatcher
             - redis
+            - elasticsearch
     php7console:
         build: php7
         container_name: php7console 
@@ -69,3 +71,9 @@ services:
         volumes_from:
             - php7 
         tty: true
+    elasticsearch:
+        image: elasticsearch:5
+        volumes:
+            - ./elasticsearch:/usr/share/elasticsearch/data
+        ports:
+            - "9200:9200"
