@@ -47,7 +47,8 @@ services:
         ports:
             - 3307:3306
         volumes:
-            - ./mysql:/var/lib/mysql
+            - ./mysql/conf:/etc/mysql/conf.d
+            - ./mysql/mysql:/var/lib/mysql
         restart: always
     pgsql:
         image: postgres:9.6
