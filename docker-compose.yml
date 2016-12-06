@@ -3,8 +3,9 @@ services:
     php5apache:
         build: php5apache
         image: maxlab/php5apache
+        restart: always        
         volumes:
-            - ./php5apache/apache2:/etc/apache2
+            - ./php5apache/conf:/etc/apache2
         env_file: ./conf/dev.env
         volumes_from:
             - php7

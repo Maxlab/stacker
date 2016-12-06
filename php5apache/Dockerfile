@@ -34,6 +34,9 @@ RUN docker-php-ext-install pdo_mysql  \
     && apt-get install -y libsqlite3-dev \
     && docker-php-ext-install pdo_sqlite
 
+RUN docker-php-ext-install mysql
+
+
 # apcu
 RUN pecl install APCu-4.0.10 \
 	&& docker-php-ext-enable apcu
@@ -65,10 +68,8 @@ RUN pecl install xdebug \
     && echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_autostart=0" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_connect_back=1" >> /usr/local/etc/php/conf.d/xdebug.ini \
+    && echo "xdebug.var_display_max_depth=6" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.idekey=PHPSTORM" >> /usr/local/etc/php/conf.d/xdebug.ini
-
-# apache
-RUN a2enmod authz_groupfile
 
 # common
 RUN docker-php-ext-install opcache calendar dba pcntl bcmath mbstring xmlrpc ftp shmop
