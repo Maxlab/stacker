@@ -125,6 +125,12 @@ How to
     - $ echo 'alias stacker="/your_path/to_stacker_folder/bin/dev $@"' >> ~/.bashrc
     - $ alias stacker="/your_path_to/stacker_folder/bin/dev $@"
     - $ stacker
+    
+- How run Laravel?
+    - $ stacker console
+    - $ cd <some_folder>
+    - $ composer create-project --prefer-dist laravel/laravel laravel
+    - $ then in browser http://<some_folder>.laravel.dev/
 
 
 
