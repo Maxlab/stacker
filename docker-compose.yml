@@ -6,6 +6,7 @@ services:
         restart: always        
         volumes:
             - ./php5apache/conf:/etc/apache2
+            - ./php5apache/php/php.ini:/usr/local/etc/php/conf.d/my.ini
         env_file: ./conf/dev.env
         volumes_from:
             - php7
