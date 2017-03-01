@@ -1,5 +1,25 @@
 version: '2'
 services:
+    php5apache:
+        build: php5apache
+        image: maxlab/php5apache
+        restart: always        
+        volumes:
+            - ./php5apache/conf:/etc/apache2
+            - ./php5apache/php/php.ini:/usr/local/etc/php/conf.d/my.ini
+        env_file: ./conf/dev.env
+        volumes_from:
+            - php7
+        depends_on:
+            - db
+            - redis
+            - mailcatcher
+        links:
+            - php7:fpm7
+            - mailcatcher
+        ports:
+            - 81:80
+            - 444:443
     web:
         build: nginx
         image: maxlab/nginx

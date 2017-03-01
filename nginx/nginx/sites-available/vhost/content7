@@ -9,12 +9,15 @@ if ( $store = "" ) {
 #    set $store "default";
 }
 
-set $htdocs "htdocs";
-if ( -e /data/$customer/$project/httpdocs ) {
-    set $htdocs "httpdocs";
+set $htdocs "";
+if ( -e /data/$customer/$project/htdocs ) {
+    set $htdocs "htdocs";
 }
 if ( -e /data/$customer/$project/public ) {
     set $htdocs "public";
+}
+if ( -e /data/$customer/$project/web ) {
+    set $htdocs "web";
 }
 
 root /data/$customer/$project/$htdocs;

@@ -4,9 +4,6 @@ index app_dev.php website.php;
 autoindex off;
 charset off;
 
-add_header 'X-Content-Type-Options' 'nosniff';
-add_header 'X-XSS-Protection' '1; mode=block';
-
 # DEV
 # This rule should only be placed on your development environment
 # In production, don't include this and don't deploy app_dev.php or config.php
@@ -20,15 +17,6 @@ location ~ ^/(app_dev|config|website|admin)\.php(/|$) {
     include fastcgi_params;
     fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
     fastcgi_param DOCUMENT_ROOT $realpath_root;
-}
-
-location ~ ^/app_dev\.php(/|$) {
-    fastcgi_pass fastcgi7_backend;
-    fastcgi_split_path_info ^(.+\.php)(/.*)$;
-    include fastcgi_params;
-    fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
-    fastcgi_param DOCUMENT_ROOT $realpath_root;
-    internal;
 }
 
 location ~ \.php$ {

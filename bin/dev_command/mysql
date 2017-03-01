@@ -1,3 +1,3 @@
 
-DEV_SERVICE=dbclient;
-DEV_CMD="mysql --host=db -u${USER} ${DEV_COMMAND_OPTIONS}";
+docker-compose exec db bash -c 'mysql -uroot -p${MYSQL_ROOT_PASSWORD} ${DEV_COMMAND_OPTIONS}'
+exit $?;
