@@ -1,12 +1,12 @@
 <!--
-  Title: Stacker - Symfony docker starter kit for development!
+  Title: Stacker - Environment for local web development, ready for use. Run Symfony, Laravel, Yii, and other frameworks easy! You can also run native php.
   Description: Quickly start of developing locally with Nginx, PHP7, Mysql, Pgsql, Mailcatcher and Redis.
                No e-mail is send externally, everything is catched by mailcatcher.
   Author: maxlab
   Badge genrator: https://poser.pugx.org/
   -->
 
-Stacker - Symfony docker starter kit for development
+Stacker - Environment for local web development, ready for use. Run Symfony, Laravel, Yii, and other frameworks easy! You can also run native php.
 ===
 [![Build Status](https://travis-ci.org/Maxlab/stacker.svg?branch=master)](https://travis-ci.org/Maxlab/stacker)
 [![License](https://poser.pugx.org/maxlab/stacker/license)](https://packagist.org/packages/maxlab/stacker)
@@ -15,6 +15,7 @@ Stacker - Symfony docker starter kit for development
 - 1 video presentation - https://youtu.be/qVqzYMczuwM (RU)
 - 2 video phpStorm + xDebug + Stacker = profit! - https://youtu.be/RYnRamdZJ-Q (RU)
 - 3 video stacker console, composer, gem, npm and etc. - https://youtu.be/WBFMs35ucfk (RU)
+- 4 video stacker Run Symfony, Laravel and native php scripts - https://youtu.be/TONMezpUqkc (RU)
 
 Quickly start of developing locally with Nginx, PHP7, Mysql, Pgsql, Mailcatcher and Redis.
 No e-mail is send externally, everything is catched by mailcatcher.
