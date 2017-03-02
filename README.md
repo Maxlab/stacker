@@ -128,9 +128,9 @@ How to
     
 - How run Laravel?
     - $ stacker console
-    - $ cd <some_folder>
+    - $ cd your_folder_for_projects
     - $ composer create-project --prefer-dist laravel/laravel laravel
-    - $ then in browser http://<some_folder>.laravel.dev/
+    - $ then in browser http://your_folder_for_projects.laravel.dev/
 
 
 
