@@ -101,6 +101,13 @@ If you want run a console to run php commands.
 - `./bin/dev console` - PHP7, gem, npm, bower, gulp, composer
 
 
+Symfony
+---
+
+- $ cd to_symfony_folder
+- $ bin/console[tab] - for completion
+
+
 How to
 ---
 

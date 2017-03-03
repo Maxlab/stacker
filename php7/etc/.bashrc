@@ -111,6 +111,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+fi
+
 
 # some more ls aliases
 alias ll='ls -alF'
