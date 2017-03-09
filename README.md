@@ -22,6 +22,7 @@ Environment for local web development, ready for use. Run Symfony, Laravel, Yii,
 
 #### General goals
 - Frameworks a lot - he's one!
+- Everything is easy, nothing to migrate
 - Quickly start of developing locally
 - No overhead on settings! Сopied project and run
 - Zoo under a Docker, let the host mashine remains clean!
