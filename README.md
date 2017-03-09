@@ -75,14 +75,6 @@ $ git clone git@github.com:Maxlab/stacker.git <stacker_folder>
 - For frontend: nodejs, gem, npm, bower, gulp, uglify-js, uglifycss 
 - For backend: composer, php, phpunit, symfony, symfony-autocomplete, Yii2 autocomplete
 
-## Before
-Tested under Linux. For Windows/Mac, take a look at the docker beta(heard that good performances are met)
-Stop all other local Webservers running on port 80/443.
-
-Set-up your database credentials in the conf directory (OPTIONAL)
-- conf/mysql
-- conf/pgsql
-
 ## Console
 you can do so
 ```sh 
