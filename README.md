@@ -6,10 +6,8 @@
   Badge genrator: https://poser.pugx.org/
   -->
 
-[logo]: /logo.png "Frameworks a lot - he's one!"
-<p style="align: center">
-![alt text][logo]
-</p>
+<img style="float: right;" alt="Frameworks a lot - he's one!" src="/logo.png">
+
 
 Stacker - Environment for local web development, ready for use. Run Symfony, Laravel, Yii, and other frameworks easy! You can also run native php.
 ===
