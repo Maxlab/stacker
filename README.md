@@ -8,8 +8,9 @@
 <p align="center">
 <img alt="Frameworks a lot - he's one!" src="/logo.png">
 </p>
+Frameworks a lot - he's one!
 Environment for local web development, ready for use. Run Symfony, Laravel, Yii, and other frameworks easy! You can also run native php.
-===
+
 [![Build Status](https://travis-ci.org/Maxlab/stacker.svg?branch=master)](https://travis-ci.org/Maxlab/stacker)
 [![License](https://poser.pugx.org/maxlab/stacker/license)](https://packagist.org/packages/maxlab/stacker)
 
@@ -27,7 +28,7 @@ No e-mail is send externally, everything is catched by mailcatcher.
 - Install docker [compose](https://docs.docker.com/compose/install/) > 1.8.0
 - Clone this project 
 ```sh 
-git clone git@github.com:Maxlab/stacker.git <stacker_folder>
+$ git clone git@github.com:Maxlab/stacker.git <stacker_folder>
 ```
 
 ## On the ship
@@ -96,6 +97,32 @@ $ stacker console
 
 ## FAQ
 
+#### Which settings in the configs for my projects?
+- Database
+    - You can access the database in your app config use `db` for mysql and `pgsql` for posgrqsql
+        (Files will be saved in the mysql directory so it will be saved after destroying or recreating the containers)
+    ```yaml
+      #Example mysql
+      parameters:
+        database_host: db
+        database_port: 3306
+        database_name: sf
+        database_user: root
+        database_password: root
+    
+      #Example pgsql
+      parameters:
+        database_host: pgsql
+        database_port: 5433
+        database_name: sf
+        database_user: postgres
+        database_password: postgres
+    ```
+
+## Redis
+To use redis, use `redis` as hostname in the config of your app.
+
+
 #### How to Configure local wildcard DNS server(for linux)
 - Install Dnsmasq: sudo apt-get install dnsmasq
 - Since Ubuntu's NetworkManager uses dnsmasq, and since that messes things up a little for us, open up /etc/NetworkManager/NetworkManager.conf and comment out (#) the line that reads dns=dnsmasq. Restart NetworkManager afterwards: sudo restart network-manager.
@@ -103,7 +130,7 @@ $ stacker console
 - Create a new file in /etc/dnsmasq.d (eg. /etc/dnsmasq.d/dev.conf), and add the line address=/.dev/127.0.0.1 to have dnsmasq resolve requests for *.dev domains. Restart Dnsmasq: sudo /etc/init.d/dnsmasq restart.
 
 #### xDebug + PhpStorm configuration
-Watch this video https://youtu.be/RdmcGAAQGfI
+- Watch this video https://youtu.be/RdmcGAAQGfI
 -dinclude_path=./:/usr/local/lib/php:/root/.composer/vendor/phpunit   
 
 #### I have a lot of the Symphony project, is it possible to make a symbolic link to them? 
@@ -114,8 +141,10 @@ remove a directory ./workspace and rename your link to workspace - that's all!
 Now all your Symphony projects is available from the browser.
 
 #### How to contact the Staker from anywhere in console?
-- $ echo 'alias stacker="/your_path/to_stacker_folder/bin/dev $@"' >> ~/.bashrc OR ~/.zshrc
-- $ stacker
+```sh
+$ echo 'alias stacker="/your_path/to_stacker_folder/bin/dev $@"' >> ~/.bashrc # OR ~/.zshrc
+$ stacker
+```
 
 #### Symfony completion
 ```sh
