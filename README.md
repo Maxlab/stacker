@@ -12,7 +12,7 @@
 [![Build Status](https://travis-ci.org/Maxlab/stacker.svg?branch=master)](https://travis-ci.org/Maxlab/stacker)
 [![License](https://poser.pugx.org/maxlab/stacker/license)](https://packagist.org/packages/maxlab/stacker)
 
-##### Frameworks a lot - he's one!
+#### Frameworks a lot - he's one!
 Environment for local web development, ready for use. Run Symfony, Laravel, Yii, and other frameworks easy! You can also run native php.
 
 - 1 video presentation - https://youtu.be/qVqzYMczuwM (RU)
@@ -20,8 +20,11 @@ Environment for local web development, ready for use. Run Symfony, Laravel, Yii,
 - 3 video stacker console, composer, gem, npm and etc. - https://youtu.be/WBFMs35ucfk (RU)
 - 4 video stacker Run Symfony, Laravel and native php scripts - https://youtu.be/TONMezpUqkc (RU)
 
-Quickly start of developing locally with Nginx, PHP7, Mysql, Pgsql, Mailcatcher and Redis.
-No e-mail is send externally, everything is catched by mailcatcher.
+#### General goals
+- Frameworks a lot - he's one!
+- Quickly start of developing locally
+- No overhead on settings! Сopied project and run
+- Zoo under a Docker, let the host mashine remains clean!
 
 
 ## Installation
@@ -149,7 +152,7 @@ $ stacker
 #### Symfony completion
 ```sh
 $ cd to_symfony_folder
-$ sf [tab*2] - for sf3 completion OR sf2 for sf2 completion
+$ sf [tab*2] # for sf3 completion OR sf2 for sf2 completion
 ```
 
     
