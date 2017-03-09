@@ -45,7 +45,8 @@ $ git clone git@github.com:Maxlab/stacker.git <stacker_folder>
 - \*.dev > 127.0.0.1 (if you use boot2docker, use that ip)
     - sudo apt-get update && sudo apt-get install dnsmasq
       add a file `/etc/dnsmasq.d/dev.conf` with `address=/.dev/127.0.0.1`
-    - move ./test to ./workspace
+    - make ./workspace folder and make a symbolic link to your folder with your projects
+    - make "test" folder and in this folder, create the folder htdocs and file index.php inside htdocs 
     - (if need) hosts
         - add `127.0.0.1 test.project.dev` to your hosts file `/etc/hosts`
         - add `127.0.0.1 mail.dev` to your hosts file `/etc/hosts`
