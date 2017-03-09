@@ -8,11 +8,12 @@
 <p align="center">
 <img alt="Frameworks a lot - he's one!" src="/logo.png">
 </p>
-Frameworks a lot - he's one!
-Environment for local web development, ready for use. Run Symfony, Laravel, Yii, and other frameworks easy! You can also run native php.
 
 [![Build Status](https://travis-ci.org/Maxlab/stacker.svg?branch=master)](https://travis-ci.org/Maxlab/stacker)
 [![License](https://poser.pugx.org/maxlab/stacker/license)](https://packagist.org/packages/maxlab/stacker)
+
+##### Frameworks a lot - he's one!
+Environment for local web development, ready for use. Run Symfony, Laravel, Yii, and other frameworks easy! You can also run native php.
 
 - 1 video presentation - https://youtu.be/qVqzYMczuwM (RU)
 - 2 video phpStorm + xDebug + Stacker = profit! - https://youtu.be/RYnRamdZJ-Q (RU)
@@ -125,9 +126,9 @@ $ stacker console
     ```
 
 #### What external ports are listening images?
-- Это просто. Для удобства внешие порты баз данных смещены на плюс один. 
-    Например mysql слушает порт 3306+1=3307 и так далее
-- Смотрите файл [docker-compose.yml](/docker-compose.yml)
+- It's easy. For convenience, the external ports of the databases are offset by plus one. 
+    For example, mysql listens to port 3306+1=3307 and so on...
+- Check the file [docker-compose.yml](/docker-compose.yml) for more 
 
 #### How to Configure local wildcard DNS server(for linux)
 - Install Dnsmasq: sudo apt-get install dnsmasq
