@@ -36,6 +36,29 @@ Environment for local web development, ready for use. Run Symfony, Laravel, Yii,
 $ git clone git@github.com:Maxlab/stacker.git <stacker_folder>
 ```
 
+## Start
+
+#### Run in Stacker directory 
+- $ docker-compose build
+- $ docker-compose up -d
+- $ docker-compose ps
+- \*.dev > 127.0.0.1 (if you use boot2docker, use that ip)
+    - sudo apt-get update && sudo apt-get install dnsmasq
+      add a file `/etc/dnsmasq.d/dev.conf` with `address=/.dev/127.0.0.1`
+    - move ./test to ./workspace
+    - (if need) hosts
+        - add `127.0.0.1 test.project.dev` to your hosts file `/etc/hosts`
+        - add `127.0.0.1 mail.dev` to your hosts file `/etc/hosts`
+
+#### For pure PHP
+- add your project in workspace folder `./workspace/<customer>/<projectname>/htdocs` (no need to restart, this will work out of the box)
+- open http://customer.project.dev/ in your browser (if you do not have dnsmasq, you have to add your hosts file manually).
+
+#### For Symfony2
+- add your Sf2 project in workspace folder `./workspace/<customer>/<projectname>` (no need to restart, this will work out of the box)
+- open http://customer.project.dev/ in your browser (if you do not have dnsmasq, you have to add your hosts file manually).
+
+
 ## On the ship
 - mailcatcher   -> schickling/mailcatcher:latest (all outgoing mail is sent to http://mail.dev/)
 - nginx         -> nginx:1.10.1
@@ -59,28 +82,6 @@ Stop all other local Webservers running on port 80/443.
 Set-up your database credentials in the conf directory (OPTIONAL)
 - conf/mysql
 - conf/pgsql
-
-## Start
-
-#### Run in Stacker directory 
-- $ docker-compose build
-- $ docker-compose up -d
-- $ docker-compose ps
-- \*.dev > 127.0.0.1 (if you use boot2docker, use that ip)
-    - sudo apt-get update && sudo apt-get install dnsmasq
-      add a file `/etc/dnsmasq.d/dev.conf` with `address=/.dev/127.0.0.1`
-    - move ./test to ./workspace
-    - (if need) hosts
-        - add `127.0.0.1 test.project.dev` to your hosts file `/etc/hosts`
-        - add `127.0.0.1 mail.dev` to your hosts file `/etc/hosts`
-
-#### For pure PHP
-- add your project in workspace folder `./workspace/<customer>/<projectname>/htdocs` (no need to restart, this will work out of the box)
-- open http://customer.project.dev/ in your browser (if you do not have dnsmasq, you have to add your hosts file manually).
-
-#### For Symfony2
-- add your Sf2 project in workspace folder `./workspace/<customer>/<projectname>` (no need to restart, this will work out of the box)
-- open http://customer.project.dev/ in your browser (if you do not have dnsmasq, you have to add your hosts file manually).
 
 ## Console
 you can do so
