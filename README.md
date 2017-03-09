@@ -117,11 +117,17 @@ $ stacker console
         database_name: sf
         database_user: postgres
         database_password: postgres
+      
+      #Example redis
+      parameters:
+        database_host: redis
+        database_port: 6379
     ```
 
-## Redis
-To use redis, use `redis` as hostname in the config of your app.
-
+#### What external ports are listening images?
+- Это просто. Для удобства внешие порты баз данных смещены на плюс один. 
+    Например mysql слушает порт 3306+1=3307 и так далее
+- Смотрите файл [docker-compose.yml](/docker-compose.yml)
 
 #### How to Configure local wildcard DNS server(for linux)
 - Install Dnsmasq: sudo apt-get install dnsmasq
