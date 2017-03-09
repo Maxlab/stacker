@@ -5,15 +5,17 @@
   Author: maxlab
   Badge genrator: https://poser.pugx.org/
   -->
-
-<img style="float: right;" alt="Frameworks a lot - he's one!" src="/logo.png">
-
-
+<p align="center">
+<img alt="Frameworks a lot - he's one!" src="/logo.png">
+</p>
 Stacker - Environment for local web development, ready for use. Run Symfony, Laravel, Yii, and other frameworks easy! You can also run native php.
 ===
 [![Build Status](https://travis-ci.org/Maxlab/stacker.svg?branch=master)](https://travis-ci.org/Maxlab/stacker)
 [![License](https://poser.pugx.org/maxlab/stacker/license)](https://packagist.org/packages/maxlab/stacker)
 
+- 1 video presentation - https://youtu.be/qVqzYMczuwM (RU)
+- 2 video phpStorm + xDebug + Stacker = profit! - https://youtu.be/RYnRamdZJ-Q (RU)
+- 3 video stacker console, composer, gem,
 - 4 video stacker Run Symfony, Laravel and native php scripts - https://youtu.be/TONMezpUqkc (RU)
 
 Quickly start of developing locally with Nginx, PHP7, Mysql, Pgsql, Mailcatcher and Redis.
