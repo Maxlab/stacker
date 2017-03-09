@@ -9,8 +9,8 @@ fi
 
 if [ -z "${DEV_COMMAND_OPTIONS}" ]; then
     # Interactive mode
-    DEV_CMD="${DEV_CMD}bash -il"
+    DEV_CMD="${DEV_CMD}${DEV_SHELL} -il"
 fi
 
-DEV_CMD='/bin/bash -c "'"${DEV_CMD} ${DEV_COMMAND_OPTIONS}"'"';
+DEV_CMD='"${DEV_SHELL}" -c "'"${DEV_CMD} ${DEV_COMMAND_OPTIONS}"'"';
 

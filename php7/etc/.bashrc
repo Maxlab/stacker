@@ -56,8 +56,6 @@ fi
 
 
 # You can https://help.ubuntu.com/community/CustomizingBashPrompt
-
-
 if [ "$color_prompt" = yes ]; then
 # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\[\033[42m\]\[\033[37m\]\u@STACKER\[\033[00m\]\[\033[01;32m\]\[\033[37m\]:\[\033[41m\] \w \[\033[00m\]\[\033[01;32m\]\[\033[37m\]> '
@@ -100,9 +98,7 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
+# enable bash completion in interactive shells
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
@@ -111,9 +107,12 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+
+
+
+
 
