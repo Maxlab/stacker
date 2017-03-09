@@ -78,13 +78,6 @@ Set-up your database credentials in the conf directory (OPTIONAL)
 - add your Sf2 project in workspace folder `./workspace/<customer>/<projectname>` (no need to restart, this will work out of the box)
 - open http://customer.project.dev/ in your browser (if you do not have dnsmasq, you have to add your hosts file manually).
 
-## Database
-You can access the database in your app config use `db` for mysql and `pgsql` for posgrqsql
-Files will be saved in the mysql directory so it will be saved after destroying or recreating the containers.
-
-## Redis
-To use redis, use `redis` as hostname in the config of your app.
-
 ## Console
 you can do so
 ```sh 
