@@ -1,7 +1,12 @@
 FROM php:7.0-fpm
 MAINTAINER Stepanov Nikolai <nstepanovdev@gmail.com>
-RUN apt-get update
 
+ENV COMPOSER_HOME=/home/composer/.composer
+ENV COMPOSER_ALLOW_SUPERUSER=1
+ENV ZSH /home/.oh-my-zsh
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+RUN apt-get update
 
 # INSTALL EXTENSIONS
 
@@ -53,7 +58,7 @@ RUN docker-php-ext-install opcache calendar dba pcntl bcmath mbstring xmlrpc ftp
 # preconf enviroment
 ENV PHP_EXTRA_CONFIGURE_ARGS --enable-fpm --with-fpm-user=www-data --with-fpm-group=www-data
 
-RUN usermod -u 1000 -d /data -s /bin/bash www-data
+RUN usermod -u 1000 -d /data www-data -s /bin/bash
 RUN groupadd -r node && \
     useradd -r -g node node && \
     usermod -G www-data -a node
@@ -78,7 +83,6 @@ RUN apt-get install -y \
 
 # Install OH-MY-ZSH to see pretty terminal and ditch the bash
 RUN apt-get install -y zsh
-ENV ZSH /home/.oh-my-zsh
 RUN curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | bash 
 
 # Clean apt
@@ -92,8 +96,6 @@ RUN gem install bundler redcarpet rouge sass:3.3.14 hologram:1.3.1
 
 #COMPOSER
 RUN curl https://getcomposer.org/installer | php -- && mv composer.phar /usr/local/bin/composer && chmod +x /usr/local/bin/composer
-ENV COMPOSER_HOME /home/composer/.composer
-ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV PATH /home/composer/.composer/vendor/bin:$PATH
 
 #PHPUNIT
@@ -106,7 +108,6 @@ WORKDIR /data
 RUN composer global require "bamarni/symfony-console-autocomplete"
 RUN ln -s /home/composer/.composer/vendor/bin/symfony-autocomplete /usr/local/bin/symfony-autocomplete
 
-
 COPY etc/php-fpm.conf /usr/local/etc/
 COPY etc/php.ini /usr/local/etc/php/
 COPY etc/.bashrc /etc/bash.bashrc
@@ -115,5 +116,4 @@ COPY etc/.zshrc /etc/zsh/zshrc
 RUN chmod ugo+rX -R /usr/local/etc/php
 RUN chmod -R 777 /home/composer && find /home/composer -type d -exec chmod 777 {} \;
 
-
-CMD ["/bin/zsh"]
+CMD ["php-fpm"]

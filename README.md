@@ -12,6 +12,9 @@ Stacker - Symfony docker starter kit for development
 [![License](https://poser.pugx.org/maxlab/stacker/license)](https://packagist.org/packages/maxlab/stacker)
 [![Total Downloads](https://poser.pugx.org/maxlab/stacker/downloads)](https://packagist.org/packages/maxlab/stacker)
 
+
+[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Frameworks a lot - he's one!"
+
 - 1 video presentation - https://youtu.be/qVqzYMczuwM (RU)
 - 2 video phpStorm + xDebug + Stacker = profit! - https://youtu.be/RYnRamdZJ-Q (RU)
 - 3 video stacker console, composer, gem, npm and etc. - https://youtu.be/WBFMs35ucfk (RU)
@@ -130,8 +133,12 @@ How to
 
 - How to contact the Staker from anywhere in console?
     - $ echo 'alias stacker="/your_path/to_stacker_folder/bin/dev $@"' >> ~/.bashrc
-    - $ alias stacker="/your_path_to/stacker_folder/bin/dev $@"
     - $ stacker
+    
+    
+Commands
+---
+- $ stacker build && stacker down && stacker up && stacker ps - for full rebuild
 
 
 
