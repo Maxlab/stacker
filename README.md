@@ -11,7 +11,8 @@
 
 [![Build Status](https://travis-ci.org/Maxlab/stacker.svg?branch=master)](https://travis-ci.org/Maxlab/stacker)
 [![License](https://poser.pugx.org/maxlab/stacker/license)](https://packagist.org/packages/maxlab/stacker)
-[![Gratipay User](https://img.shields.io/gratipay/user/maxlab.svg)]()
+[![Gratipay User](https://img.shields.io/gratipay/user/maxlab.svg)](https://gratipay/~maxlab)
+[![Bountysource](https://img.shields.io/bountysource/team/maxlabstacker/activity.svg)](https://www.bountysource.com/teams/maxlabstacker)
 
 #### Frameworks a lot - he's one!
 Environment for local web development, ready for use. Run Symfony, Laravel, Yii, and other frameworks easy! You can also run native php.
@@ -156,11 +157,6 @@ $ sf [tab*2] # for sf3 completion OR sf2 for sf2 completion
 ```sh
 $ stacker build && stacker down && stacker up && stacker ps #for full rebuild
 ```
-
-## Support
-<p>
-<script data-gratipay-username="Maxlab" src="https//grtp.co/v2.js" async></script>
-</p>
 
 
 
