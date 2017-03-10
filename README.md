@@ -158,7 +158,9 @@ $ stacker build && stacker down && stacker up && stacker ps #for full rebuild
 ```
 
 ## Support
-<script data-gratipay-username="Maxlab" src="//grtp.co/v1.js"></script>
+<p>
+<script data-gratipay-username="Maxlab" src="https//grtp.co/v2.js" async></script>
+</p>
 
 
 
