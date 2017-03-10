@@ -11,6 +11,7 @@
 
 [![Build Status](https://travis-ci.org/Maxlab/stacker.svg?branch=master)](https://travis-ci.org/Maxlab/stacker)
 [![License](https://poser.pugx.org/maxlab/stacker/license)](https://packagist.org/packages/maxlab/stacker)
+[![Gratipay User](https://img.shields.io/gratipay/user/dougwilson.svg)](https://gratipay.com/~Maxlab)
 
 #### Frameworks a lot - he's one!
 Environment for local web development, ready for use. Run Symfony, Laravel, Yii, and other frameworks easy! You can also run native php.
