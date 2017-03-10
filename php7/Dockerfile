@@ -94,6 +94,7 @@ RUN npm install -g bower gulp uglify-js uglifycss && \
 # Install gem dependencies
 RUN gem install bundler redcarpet rouge sass:3.3.14 hologram:1.3.1
 
+
 #COMPOSER
 RUN curl https://getcomposer.org/installer | php -- && mv composer.phar /usr/local/bin/composer && chmod +x /usr/local/bin/composer
 ENV PATH /home/composer/.composer/vendor/bin:$PATH
@@ -102,11 +103,18 @@ ENV PATH /home/composer/.composer/vendor/bin:$PATH
 RUN composer global require "phpunit/phpunit"
 RUN ln -s /home/composer/.composer/vendor/bin/phpunit /usr/local/bin/phpunit
 
-WORKDIR /data
+#Laravel
+RUN composer global require "laravel/installer"
+RUN ln -s /home/composer/.composer/vendor/bin/laravel /usr/local/bin/laravel
 
-#Autocomplete symfony2
+#Symfony installer
+RUN curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony
+RUN chmod a+x /usr/local/bin/symfony
+
+#Symfony2 autocomplete
 RUN composer global require "bamarni/symfony-console-autocomplete"
 RUN ln -s /home/composer/.composer/vendor/bin/symfony-autocomplete /usr/local/bin/symfony-autocomplete
+
 
 COPY etc/php-fpm.conf /usr/local/etc/
 COPY etc/php.ini /usr/local/etc/php/
@@ -115,5 +123,7 @@ COPY etc/.zshrc /etc/zsh/newuser.zshrc.recommended
 COPY etc/.zshrc /etc/zsh/zshrc
 RUN chmod ugo+rX -R /usr/local/etc/php
 RUN chmod -R 777 /home/composer && find /home/composer -type d -exec chmod 777 {} \;
+
+WORKDIR /data
 
 CMD ["php-fpm"]
