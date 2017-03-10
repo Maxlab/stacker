@@ -157,5 +157,8 @@ $ sf [tab*2] # for sf3 completion OR sf2 for sf2 completion
 $ stacker build && stacker down && stacker up && stacker ps #for full rebuild
 ```
 
+## Support
+<script data-gratipay-username="Maxlab" src="//grtp.co/v1.js"></script>
+
 
 
