@@ -1,5 +1,0 @@
-
-. ./php;
-
-# Just force service
-DEV_SERVICE=php7;

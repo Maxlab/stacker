@@ -7,4 +7,4 @@ if [ -n "${DEV_DATADIR}" ]; then
     DEV_CMD="cd ${DEV_DATADIR} && php";
 fi
 
-DEV_CMD='"${DEV_SHELL}" -c "'"${DEV_CMD} ${DEV_COMMAND_OPTIONS}"'"';
+DEV_CMD='/bin/bash -c "'"${DEV_CMD} ${DEV_COMMAND_OPTIONS}"'"';
