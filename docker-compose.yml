@@ -11,7 +11,7 @@ services:
         volumes_from:
             - php7
         depends_on:
-            - db
+            - mysql
             - redis
             - mailcatcher
         links:
@@ -27,7 +27,7 @@ services:
         env_file: ./conf/dev.env
         depends_on:
             - php7
-            - db
+            - mysql
             - pgsql
             - redis
             - mailcatcher
@@ -43,7 +43,7 @@ services:
             - 80:80
             - 443:433
         command: /bin/bash -c "envsubst '$$SYMFONY_ENV' < /tmp/nginx/symfony.env.tpl > /etc/nginx/sites-available/vhost/symfony && nginx"
-    db:
+    mysql:
         image: mysql:5.7
         env_file: ./conf/dev.env
         ports:
@@ -78,12 +78,12 @@ services:
             - ${HOME}/.ssh/id_rsa:/data/.ssh/id_rsa:ro
         links:
             - pgsql
-            - db
+            - mysql
             - mailcatcher
             - redis
             - elasticsearch
     php7console:
-        build: php7
+        build: php7console
         container_name: php7console 
         image: maxlab/php7console
         env_file: ./conf/dev.env

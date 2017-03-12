@@ -99,7 +99,7 @@ $ stacker console
     ```yaml
       #Example mysql
       parameters:
-        database_host: db
+        database_host: mysql
         database_port: 3306
         database_name: sf
         database_user: root
@@ -149,6 +149,7 @@ $ stacker
 
 #### Symfony completion
 ```sh
+$ stacker console
 $ cd to_symfony_folder
 $ sf [tab*2] # for sf3 completion OR sf2 for sf2 completion
 ```
@@ -156,7 +157,11 @@ $ sf [tab*2] # for sf3 completion OR sf2 for sf2 completion
     
 ## Commands
 ```sh
+$ stacker console # for console
+
 $ stacker build && stacker down && stacker up && stacker ps #for full rebuild
+
+$ stacker usage # for list available commands
 ```
 
 
