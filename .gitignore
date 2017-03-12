@@ -1,5 +1,5 @@
 /workspace
 mysql/mysql
 .idea/
-pgsql/
-elasticsearch
+pgsql/pgsql
+elasticsearch/elasticsearch
