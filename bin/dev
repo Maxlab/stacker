@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 init() {
 
@@ -8,7 +8,7 @@ init() {
     DEV_WORKDIR=$(dirname ${DEV_DIR});
     DEV_PROJECT=$(basename ${DEV_WORKDIR});
     DEV_USERDIR=${PWD};
-    DEV_SHELL=/bin/zsh;
+    DEV_SHELL=/bin/bash;
 
     DEV_COMMANDDIR=${DEV_DIR}/dev_command;
 
