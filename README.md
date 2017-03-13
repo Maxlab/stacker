@@ -143,7 +143,16 @@ Now all your Symphony projects is available from the browser.
 
 #### How to contact the Staker from anywhere in console?
 ```sh
-$ echo 'alias stacker="/your_path/to_stacker_folder/bin/dev $@"' >> ~/.bashrc # OR ~/.zshrc
+$ echo 'alias stacker="/your_path/to_stacker_folder/bin/stacker' >> ~/.bashrc && source ~/.bashrc # OR ~/.zshrc
+$ stacker
+```
+
+#### How to contact the any instances Staker in console?
+```sh
+$ echo 'export PATH=./bin:$PATH' >> ~/.bashrc && source ~/.bashrc # OR ~/.zshrc
+$ cd /your_path/to_stacker_folder1
+$ stacker
+$ cd /your_path/to_stacker_folder2
 $ stacker
 ```
 
