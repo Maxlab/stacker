@@ -36,23 +36,30 @@ Environment for local web development, ready for use. Run Symfony, Laravel, Yii,
 - Install docker [compose](https://docs.docker.com/compose/install/) > 1.8.0
 - Clone this project 
 ```sh 
-$ git clone git@github.com:Maxlab/stacker.git <stacker_folder>
+$ git clone git@github.com:Maxlab/stacker.git
 ```
 
 ## Start
 
 #### Run in Stacker directory 
-- $ docker-compose build
-- $ docker-compose up -d
-- $ docker-compose ps
-- \*.dev > 127.0.0.1 (if you use boot2docker, use that ip)
-    - sudo apt-get update && sudo apt-get install dnsmasq
-      add a file `/etc/dnsmasq.d/dev.conf` with `address=/.dev/127.0.0.1`
-    - make ./workspace folder and make a symbolic link to your folder with your projects
-    - make "test" folder and in this folder, create the folder htdocs and file index.php inside htdocs 
-    - (if need) hosts
-        - add `127.0.0.1 test.project.dev` to your hosts file `/etc/hosts`
-        - add `127.0.0.1 mail.dev` to your hosts file `/etc/hosts`
+```sh 
+$ \*.dev > 127.0.0.1 (if you use boot2docker, use that ip)
+$ sudo apt-get update && sudo apt-get install dnsmasq
+
+add a file `/etc/dnsmasq.d/dev.conf` with `address=/.dev/127.0.0.1`
+make ./workspace folder and make a symbolic link to your folder with your projects 
+
+$ mkdir workspace && ln -s /your_path/to_your_own_projects ./workspace
+$ mv ./test ./workspace
+
+- (if need) hosts
+    - add `127.0.0.1 test.project.dev` to your hosts file `/etc/hosts`
+    - add `127.0.0.1 mail.dev` to your hosts file `/etc/hosts`  
+  
+$ docker-compose build && docker-compose up -d && docker-compose ps
+```
+Then open your browser and open http://test.php.dev/
+
 
 #### For pure PHP
 - add your project in workspace folder `./workspace/<customer>/<projectname>/htdocs` (no need to restart, this will work out of the box)
@@ -69,26 +76,15 @@ $ git clone git@github.com:Maxlab/stacker.git <stacker_folder>
 - elasticsearch -> elasticsearch:5
 - mysql         -> mysql:5.7
 - pgsql         -> postgres:9.6   
-- php7          -> php:7.0
+- php7xdebug    -> php:7.0 + xdebug
 - php5apache    -> php:5apache for legacy
-- xdebug        -> for debuging
+- php7console   -> stacker console
 - redis         -> redis:3.0
 
-## Cli
+## Console
 - *ZSH* + [oh-my-zsh](http://ohmyz.sh/)
 - For frontend: nodejs, gem, npm, bower, gulp, uglify-js, uglifycss 
 - For backend: composer, php, phpunit, symfony, symfony-autocomplete, Yii2 autocomplete
-
-## Console
-you can do so
-```sh 
-$ /your_path/to_stacker_folder/bin/dev console
-```
-but, it will be much better
-```sh
-$ echo 'alias stacker="/your_path/to_stacker_folder/bin/dev $@"' >> ~/.bashrc OR ~/.zshrc
-$ stacker console
-```
 
 ## FAQ
 
@@ -141,19 +137,15 @@ Now, make a link to your directory project in the directory with the Stacker,
 remove a directory ./workspace and rename your link to workspace - that's all! 
 Now all your Symphony projects is available from the browser.
 
-#### How to contact the Staker from anywhere in console?
-```sh
-$ echo 'alias stacker="/your_path/to_stacker_folder/bin/stacker' >> ~/.bashrc && source ~/.bashrc # OR ~/.zshrc
-$ stacker
-```
-
 #### How to contact the any instances Staker in console?
+You can do so
+```sh 
+$ /your_path/to_stacker_folder/bin/stacker console
+```
+But, it will be much better
 ```sh
-$ echo 'export PATH=./bin:$PATH' >> ~/.bashrc && source ~/.bashrc # OR ~/.zshrc
-$ cd /your_path/to_stacker_folder1
-$ stacker
-$ cd /your_path/to_stacker_folder2
-$ stacker
+$ echo 'export PATH=/your_path/to_stacker_folder/bin:$PATH' >> ~/.bashrc && source ~/.bashrc # OR ~/.zshrc
+$ stacker console
 ```
 
 #### Symfony completion
@@ -163,14 +155,12 @@ $ cd to_symfony_folder
 $ sf [tab*2] # for sf3 completion OR sf2 for sf2 completion
 ```
 
-    
 ## Commands
 ```sh
-$ stacker console # for console
-
-$ stacker build && stacker down && stacker up && stacker ps #for full rebuild
-
 $ stacker usage # for list available commands
+$ stacker console # for enter to console
+$ stacker logs <cont_name> -f # for logs stream container
+$ stacker build && stacker down && stacker up && stacker ps #for full rebuild
 ```
 
 
