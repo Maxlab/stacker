@@ -46,15 +46,15 @@ $ git clone git@github.com:Maxlab/stacker.git
 $ \*.dev > 127.0.0.1 (if you use boot2docker, use that ip)
 $ sudo apt-get update && sudo apt-get install dnsmasq
 
-add a file `/etc/dnsmasq.d/dev.conf` with `address=/.dev/127.0.0.1`
-make ./workspace folder and make a symbolic link to your folder with your projects 
+# add a file `/etc/dnsmasq.d/dev.conf` with `address=/.dev/127.0.0.1`
+# make ./workspace folder and make a symbolic link to your folder with your projects 
 
 $ mkdir workspace && ln -s /your_path/to_your_own_projects ./workspace
 $ mv ./test ./workspace
 
-- (if need) hosts
-    - add `127.0.0.1 test.project.dev` to your hosts file `/etc/hosts`
-    - add `127.0.0.1 mail.dev` to your hosts file `/etc/hosts`  
+#- (if need) hosts
+#    - add `127.0.0.1 test.project.dev` to your hosts file `/etc/hosts`
+#    - add `127.0.0.1 mail.dev` to your hosts file `/etc/hosts`  
   
 $ docker-compose build && docker-compose up -d && docker-compose ps
 ```
@@ -144,7 +144,11 @@ $ /your_path/to_stacker_folder/bin/stacker console
 ```
 But, it will be much better
 ```sh
-$ echo 'export PATH=/your_path/to_stacker_folder/bin:$PATH' >> ~/.bashrc && source ~/.bashrc # OR ~/.zshrc
+# for bash
+$ echo 'export PATH=/your_path/to_stacker_folder/bin:$PATH' >> ~/.bashrc && source ~/.bashrc 
+# for ~/.zshrc
+$ echo 'export PATH=/your_path/to_stacker_folder/bin:$PATH' >> ~/.zshrc && source ~/.zshrc
+# then restart console and run
 $ stacker console
 ```
 
