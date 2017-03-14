@@ -1,10 +1,4 @@
-<!--
-  Title: Stacker - Environment for local web development, ready for use. Run Symfony, Laravel, Yii, and other frameworks easy! You can also run native php.
-  Description: Quickly start of developing locally with Nginx, PHP7, Mysql, Pgsql, Mailcatcher and Redis.
-               No e-mail is send externally, everything is catched by mailcatcher.
-  Author: maxlab
-  Badge genrator: https://poser.pugx.org/
-  -->
+
 <p align="center">
 <img alt="Frameworks a lot - he's one!" src="/logo.png">
 </p>
