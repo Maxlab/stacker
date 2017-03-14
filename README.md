@@ -43,20 +43,19 @@ $ git clone git@github.com:Maxlab/stacker.git
 
 #### Run in Stacker directory 
 ```sh 
+# make ./workspace folder and make a symbolic link to your folder with your projects 
+$ mkdir workspace && ln -s /your_path/to_your_own_projects ./workspace
+
+$ docker-compose build && docker-compose up -d && docker-compose ps
+
 $ \*.dev > 127.0.0.1 (if you use boot2docker, use that ip)
 $ sudo apt-get update && sudo apt-get install dnsmasq
-
-# add a file `/etc/dnsmasq.d/dev.conf` with `address=/.dev/127.0.0.1`
-# make ./workspace folder and make a symbolic link to your folder with your projects 
-
-$ mkdir workspace && ln -s /your_path/to_your_own_projects ./workspace
 $ mv ./test ./workspace
-
-#- (if need) hosts
+# add a file `/etc/dnsmasq.d/dev.conf` with `address=/.dev/127.0.0.1`
+# - (if need) hosts
 #    - add `127.0.0.1 test.project.dev` to your hosts file `/etc/hosts`
 #    - add `127.0.0.1 mail.dev` to your hosts file `/etc/hosts`  
   
-$ docker-compose build && docker-compose up -d && docker-compose ps
 ```
 Then open your browser and open http://test.php.dev/
 
