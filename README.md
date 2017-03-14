@@ -52,13 +52,11 @@ $ \*.dev > 127.0.0.1 (if you use boot2docker, use that ip)
 $ sudo apt-get update && sudo apt-get install dnsmasq
 $ mv ./test ./workspace
 ```
-add a file `/etc/dnsmasq.d/dev.conf` with `address=/.dev/127.0.0.1`
-
+- add a file `/etc/dnsmasq.d/dev.conf` with `address=/.dev/127.0.0.1`
 - (if need) hosts
   - add `127.0.0.1 test.project.dev` to your hosts file `/etc/hosts`
   - add `127.0.0.1 mail.dev` to your hosts file `/etc/hosts`  
-
-Then open your browser and open http://test.php.dev/
+- Then open your browser and open http://test.php.dev/
 
 
 #### For pure PHP
