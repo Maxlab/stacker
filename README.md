@@ -1,6 +1,6 @@
 
 <p align="center">
-<img alt="Frameworks a lot - he's one!" src="/logo.png">
+<img alt="Frameworks a lot - he's one!" src="logo.png">
 </p>
 
 [![Build Status](https://travis-ci.org/Maxlab/stacker.svg?branch=master)](https://travis-ci.org/Maxlab/stacker)
