@@ -83,5 +83,8 @@ COPY etc/php-fpm.conf /usr/local/etc/
 COPY etc/php.ini /usr/local/etc/php/
 RUN chmod ugo+rX -R /usr/local/etc/php
 
+# SSH
+RUN echo "" >> /etc/ssh/ssh_config && echo "IdentityFile /data/.ssh/id_rsa" >> /etc/ssh/ssh_config
+
 WORKDIR /data
 CMD ["php-fpm"]
