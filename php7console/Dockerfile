@@ -3,7 +3,7 @@ MAINTAINER Stepanov Nikolai <nstepanovdev@gmail.com>
 
 ENV COMPOSER_HOME=/home/composer/.composer
 ENV COMPOSER_ALLOW_SUPERUSER=1
-ENV ZSH /home/.oh-my-zsh
+ENV ZSH=/home/.oh-my-zsh
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get update
