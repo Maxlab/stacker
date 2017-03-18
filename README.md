@@ -52,6 +52,11 @@ $ mv ./test ./workspace
   - add `127.0.0.1 mail.dev` to your hosts file `/etc/hosts`  
 - Then open http://test.php.dev/ in your browser
 
+#### For SSH
+Copy your ssh keys in the folder workspace
+```sh
+$ cp -R ~/.ssh ~/www/docker/stacker/workspace 
+```
 #### For pure PHP
 - Add your project in workspace folder `./workspace/<customer>/<projectname>/htdocs` (no need to restart, this will work out of the box)
 - Open http://customer.project.dev/ in your browser (if you do not have dnsmasq, you have to add your hosts file manually)
