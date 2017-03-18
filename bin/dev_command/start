@@ -1,4 +1,4 @@
 
-docker-compose start ${DEV_COMMAND_OPTIONS};
+cd ${DEV_WORKDIR} && docker-compose start ${DEV_COMMAND_OPTIONS};
 exit $?;
 
