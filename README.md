@@ -37,8 +37,8 @@ $ git clone git@github.com:Maxlab/stacker.git
 
 #### Run in Stacker directory 
 ```sh 
-# make ./workspace folder and make a symbolic link to your folder with your projects 
-$ mkdir workspace && ln -s /your_path/to_your_own_projects ./workspace
+# make ./workspace folder and make a symbolic link to your folder with all your projects 
+$ mkdir workspace && ln -s /your_path/to_all_your_own_projects ./workspace
 
 $ docker-compose build && docker-compose up -d && docker-compose ps
 
@@ -51,6 +51,8 @@ $ mv ./test ./workspace
   - add `127.0.0.1 test.project.dev` to your hosts file `/etc/hosts`
   - add `127.0.0.1 mail.dev` to your hosts file `/etc/hosts`  
 - Then open http://test.php.dev/ in your browser
+
+- [Examples](https://youtu.be/42BemUfK5-4)
 
 #### For SSH
 Copy your ssh keys in the folder workspace
