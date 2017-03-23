@@ -45,6 +45,7 @@ $ docker-compose build && docker-compose up -d && docker-compose ps
 $ \*.dev > 127.0.0.1 # if you use boot2docker, use that ip
 $ sudo apt-get update && sudo apt-get install dnsmasq
 $ mv ./test ./workspace
+$ service docker restart
 ```
 - Add a file `/etc/dnsmasq.d/dev.conf` with `address=/.dev/127.0.0.1`
 - Edit `/etc/hosts` file if you want to use a domain name:
