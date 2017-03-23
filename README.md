@@ -39,9 +39,7 @@ $ git clone git@github.com:Maxlab/stacker.git
 ```sh 
 # make ./workspace folder and make a symbolic link to your folder with all your projects 
 $ mkdir workspace && ln -s /your_path/to_all_your_own_projects ./workspace
-
 $ docker-compose build && docker-compose up -d && docker-compose ps
-
 $ \*.dev > 127.0.0.1 # if you use boot2docker, use that ip
 $ sudo apt-get update && sudo apt-get install dnsmasq
 $ mv ./test ./workspace
@@ -177,6 +175,13 @@ $ stacker console
 $ stacker console
 $ cd to_symfony_folder
 $ sf [tab*2] # for sf3 completion OR sf2 for sf2 completion
+```
+
+#### Laravel5 completion
+```sh
+$ stacker console
+$ cd to_symfony_folder
+$ la5 [tab*2]
 ```
 
 ## Commands
