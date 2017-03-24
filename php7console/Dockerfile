@@ -1,9 +1,10 @@
-FROM php:7.0-fpm
+FROM php:7.1-fpm
 MAINTAINER Stepanov Nikolai <nstepanovdev@gmail.com>
 
 ENV COMPOSER_HOME=/home/composer/.composer
 ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV ZSH=/home/.oh-my-zsh
+ARG TZ
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get update

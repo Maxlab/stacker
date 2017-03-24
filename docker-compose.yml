@@ -61,10 +61,24 @@ services:
         image: schickling/mailcatcher
         restart: always
         
+    
+    php7console:
+        env_file: .env
+        build:
+            args:
+                - TZ=${TZ}
+            context: ./php7console 
+        container_name: php7console 
+        image: maxlab/php7console
+        restart: always        
+        volumes_from:
+            - php7xdebug 
+        tty: true
+        
         
     php7xdebug:
         env_file: .env
-        build: 
+        build:
             context: ./php7xdebug
         image: maxlab/php7xdebug
         restart: always
@@ -99,18 +113,7 @@ services:
             - 81:80
             - 444:443
             
-            
-    php7console:
-        build: php7console
-        container_name: php7console 
-        image: maxlab/php7console
-        env_file: .env
-        restart: always        
-        volumes_from:
-            - php7xdebug 
-        tty: true
-        
-        
+                
     elasticsearch: 
         build: elasticsearch
         volumes:
