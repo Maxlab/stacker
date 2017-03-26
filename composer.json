@@ -12,8 +12,5 @@
             "homepage": "https://github.com/Maxlab",
             "role": "author"
         }
-    ],
-    "require": {
-        "docker-compose": ">1.8.0"
-    }
+    ]
 }
