@@ -20,12 +20,6 @@ Environment for local web development, ready for use. Run Symfony, Laravel, Yii,
 - No overhead on settings! Сopied project and run
 - Zoo under a Docker, let the host mashine remains clean!
 
-#### Video demos (RU)
-- [Presentation](https://youtu.be/qVqzYMczuwM)
-- [PhpStorm + Xdebug + Stacker = profit!](https://youtu.be/RYnRamdZJ-Q)
-- [Console, Composer, Gulp, Npm, Gem, Bower](https://youtu.be/WBFMs35ucfk)
-- [Run Symfony, Laravel and native PHP scripts](https://youtu.be/TONMezpUqkc)
-
 #### Why stacker?
 Stacker - This is a local environment for web development with everything you need. What is its benefit?
 1. You do not need to manually configure the web server and add to the hosts, just cloned it and immediately launched it in the browser. It looks so [demo](https://youtu.be/42BemUfK5-4)
@@ -39,6 +33,11 @@ Stacker - This is a local environment for web development with everything you ne
 9. It is very simple to expand. The process of adding your own images with a couple of lines in docker-compose.yml
 10. Just try it!
 
+#### Video demos (RU)
+- [Presentation](https://youtu.be/qVqzYMczuwM)
+- [PhpStorm + Xdebug + Stacker = profit!](https://youtu.be/RYnRamdZJ-Q)
+- [Console, Composer, Gulp, Npm, Gem, Bower](https://youtu.be/WBFMs35ucfk)
+- [Run Symfony, Laravel and native PHP scripts](https://youtu.be/TONMezpUqkc)
 
 ## Requirements
 - Install [Docker](https://docs.docker.com/)
@@ -46,10 +45,13 @@ Stacker - This is a local environment for web development with everything you ne
 
 ## Installation
 
-#### Clone this project: 
+#### Get a stacker: 
 ```sh 
+$ composer create-project maxlab/stacker 
+# OR
 $ git clone git@github.com:Maxlab/stacker.git
 ```
+
 #### Run in Stacker directory 
 ```sh 
 # make ./workspace folder and make a symbolic link to your folder with all your projects 
@@ -73,13 +75,12 @@ Copy your ssh keys in the folder workspace
 $ cp -R ~/.ssh ~/www/docker/stacker/workspace 
 ```
 #### For pure PHP
-- Add your project in workspace folder `./workspace/<customer>/<projectname>/htdocs` (no need to restart, this will work out of the box)
+- Add your project in workspace folder `./workspace/<customer>/<projectname>` (no need to restart, this will work out of the box)
 - Open http://customer.project.dev/ in your browser (if you do not have dnsmasq, you have to add your hosts file manually)
 
 #### For Symfony2
 - Add your Sf2 project in workspace folder `./workspace/<customer>/<projectname>` (no need to restart, this will work out of the box)
 - Open http://customer.project.dev/ in your browser (if you do not have dnsmasq, you have to add your hosts file manually)
-
 
 ## On the ship
 - mailcatcher   -> schickling/mailcatcher:latest (all outgoing mail is sent to http://mail.dev/)
@@ -87,7 +88,7 @@ $ cp -R ~/.ssh ~/www/docker/stacker/workspace
 - elasticsearch -> elasticsearch:5
 - mysql         -> mysql:5.7
 - pgsql         -> postgres:9.6   
-- php7xdebug    -> php:7.0 + xdebug
+- php7xdebug    -> php:7.1 + xdebug
 - php5apache    -> php:5apache for legacy
 - php7console   -> stacker console
 - redis         -> redis:3.0
@@ -152,15 +153,11 @@ $ sudo restart network-manager
 $ sudo /etc/init.d/dnsmasq restart
 ```
 
-#### Xdebug + PhpStorm configuration
+#### Xdebug + PhpStorm configuration 
 - Watch [this video](https://youtu.be/RdmcGAAQGfI) (in Russian)
 
 1. Go to Settings -> Languages & Frameworks -> PHP
 2. Click the ... behind your interperter
-3. And add in the configuration options the following:
-```
--d include_path=./:/usr/local/lib/php:/root/.composer/vendor/phpunit
-```
 
 #### I have a lot of the Symfony project, is it possible to make a symbolic link to them? 
 - Yes! It's much faster and easier, plus no need to move folders from the usual places.
