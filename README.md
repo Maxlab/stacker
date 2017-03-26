@@ -2,9 +2,11 @@
 <img alt="Frameworks a lot - he's one!" src="logo.png">
 </p>
 
+
 [![Latest Stable Version](https://poser.pugx.org/maxlab/stacker/v/stable)](https://packagist.org/packages/maxlab/stacker)
 [![Build Status](https://travis-ci.org/Maxlab/stacker.svg?branch=master)](https://travis-ci.org/Maxlab/stacker)
 [![License](https://poser.pugx.org/maxlab/stacker/license)](https://packagist.org/packages/maxlab/stacker)
+[![Latest Unstable Version](https://poser.pugx.org/maxlab/stacker/v/unstable)](https://packagist.org/packages/maxlab/stacker)
 
 ## Introduction
 #### Frameworks a lot - he's one!
