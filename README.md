@@ -10,16 +10,6 @@
 
 ## Introduction
 
-#### Frameworks a lot - he's one!
-Environment for local web development, ready for use. Run Symfony, Laravel, Yii, and other frameworks easy! You can also run native php.
-
-#### General goals
-- Frameworks a lot - he's one!
-- Everything is easy, nothing to migrate
-- Quickly start of developing locally
-- No overhead on settings! Сopied project and run
-- Zoo under a Docker, let the host mashine remains clean!
-
 #### Why stacker?
 Stacker - This is a local environment for web development with everything you need. What is its benefit?
 1. You do not need to manually configure the web server and add to the hosts, just cloned it and immediately launched it in the browser. It looks so [demo](https://youtu.be/42BemUfK5-4)
@@ -32,6 +22,14 @@ Stacker - This is a local environment for web development with everything you ne
 8. Based on Docker. Wherever you can install Docker, you can install and Stacker
 9. It is very simple to expand. The process of adding your own images with a couple of lines in docker-compose.yml
 10. Just try it!
+
+#### General goals
+- Frameworks a lot - he's one!
+- Everything is easy, nothing to migrate
+- Quickly start of developing locally
+- No overhead on settings! Сopied project and run
+- Zoo under a Docker, let the host mashine remains clean!
+
 
 #### Video demos (RU)
 - [Presentation](https://youtu.be/qVqzYMczuwM)
