@@ -1,40 +1,47 @@
-
 <p align="center">
 <img alt="Frameworks a lot - he's one!" src="logo.png">
 </p>
 
 [![Build Status](https://travis-ci.org/Maxlab/stacker.svg?branch=master)](https://travis-ci.org/Maxlab/stacker)
 [![License](https://poser.pugx.org/maxlab/stacker/license)](https://packagist.org/packages/maxlab/stacker)
-[![Gratipay User](https://img.shields.io/gratipay/user/maxlab.svg)](https://gratipay.com/~maxlab)
-[![Bountysource](https://img.shields.io/bountysource/team/maxlabstacker/activity.svg)](https://www.bountysource.com/teams/maxlabstacker)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Q477VJVB9STGS)
 
+## Introduction
 #### Frameworks a lot - he's one!
 Environment for local web development, ready for use. Run Symfony, Laravel, Yii, and other frameworks easy! You can also run native php.
-
-#### Video demos (RU)
-- [Presentation](https://youtu.be/qVqzYMczuwM)
-- [PhpStorm + Xdebug + Stacker = profit!](https://youtu.be/RYnRamdZJ-Q)
-- [Console, Composer, Gulp, Npm, Gem, Bower](https://youtu.be/WBFMs35ucfk)
-- [Run Symfony, Laravel and native PHP scripts](https://youtu.be/TONMezpUqkc)
-
 #### General goals
 - Frameworks a lot - he's one!
 - Everything is easy, nothing to migrate
 - Quickly start of developing locally
 - No overhead on settings! Сopied project and run
 - Zoo under a Docker, let the host mashine remains clean!
+#### Video demos (RU)
+- [Presentation](https://youtu.be/qVqzYMczuwM)
+- [PhpStorm + Xdebug + Stacker = profit!](https://youtu.be/RYnRamdZJ-Q)
+- [Console, Composer, Gulp, Npm, Gem, Bower](https://youtu.be/WBFMs35ucfk)
+- [Run Symfony, Laravel and native PHP scripts](https://youtu.be/TONMezpUqkc)
+#### Why stacker?
+Stacker - This is a local environment for web development with everything you need. What is its benefit?
+1. You do not need to manually configure the web server and add to the hosts, just cloned it and immediately launched it in the browser. It looks so https://youtu.be/42BemUfK5-4
+2. Inside, there is already everything that is needed in 90% of all cases. And if not, we will add it for you)
+3. For you, there is a super zsh console with autocomplete and everything you need. Video with presentation https://youtu.be/N7HpPoNcaA4?list=PLD8VGB8i9TYha8YOd-deV6bX5hZco0ZGy 
+4. There is an autocompletion for Symfony and Laravel commands out of the box. For example, la5 and a double tab, will output a list of commands for which you can "walk" with arrows to select them
+5. It is faster analogs, the same homestead is just a turtle compared to it
+6. There is a video course https://www.youtube.com/playlist?list=PLD8VGB8i9TYha8YOd-deV6bX5hZco0ZGy
+7. Friendly author, in case there are questions or suggestions
+8. Based on Docker. Wherever you can install Docker, you can install and Stacker
+9. It is very simple to expand. The process of adding your own images with a couple of lines in docker-compose.yml
+10. Just try it!
+
 
 ## Requirements
 - Install [Docker](https://docs.docker.com/)
 - Install [Docker Compose](https://docs.docker.com/compose/install/) > 1.8.0
-- Clone this project: 
+
+## Installation
+#### Clone this project: 
 ```sh 
 $ git clone git@github.com:Maxlab/stacker.git
 ```
-
-## Usage
-
 #### Run in Stacker directory 
 ```sh 
 # make ./workspace folder and make a symbolic link to your folder with all your projects 
@@ -50,7 +57,6 @@ $ service docker restart
   - add `127.0.0.1 test.project.dev` to your hosts file `/etc/hosts`
   - add `127.0.0.1 mail.dev` to your hosts file `/etc/hosts`  
 - Then open http://test.php.dev/ in your browser
-
 - [Examples](https://youtu.be/42BemUfK5-4)
 
 #### For SSH
@@ -191,3 +197,9 @@ $ stacker console # for enter to console
 $ stacker logs <cont_name> -f # for logs stream container
 $ stacker build && stacker down && stacker up && stacker ps # for full rebuild
 ```
+
+## Support project
+You can support the project in several ways:
+1. Becoming a sponsor - If you are interested in becoming a sponsor, please visit the Stacker [Patreon page](http://patreon.com/maxlab)
+2. Posting review - You can support the project by posting reviews in their social networks. Send a link to the review and we'll post it here!
+3. Buy a beer - [![Gratipay User](https://img.shields.io/gratipay/user/maxlab.svg)](https://gratipay.com/~maxlab) [![Bountysource](https://img.shields.io/bountysource/team/maxlabstacker/activity.svg)](https://www.bountysource.com/teams/maxlabstacker) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Q477VJVB9STGS)
