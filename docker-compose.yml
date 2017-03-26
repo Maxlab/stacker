@@ -23,7 +23,7 @@ services:
             - mailcatcher
         ports:
             - 80:80
-            - 443:433
+            - 443:443
         command: /bin/bash -c "envsubst '$$SYMFONY_ENV' < /tmp/nginx/symfony.env.tpl > /etc/nginx/sites-available/vhost/symfony && nginx"
         
         
