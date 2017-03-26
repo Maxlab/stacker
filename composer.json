@@ -15,10 +15,5 @@
     ],
     "require": {
         "docker-compose": ">1.8.0"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.6-dev"
-        }
     }
 }
