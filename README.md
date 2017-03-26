@@ -9,19 +9,23 @@
 [![Latest Unstable Version](https://poser.pugx.org/maxlab/stacker/v/unstable)](https://packagist.org/packages/maxlab/stacker)
 
 ## Introduction
+
 #### Frameworks a lot - he's one!
 Environment for local web development, ready for use. Run Symfony, Laravel, Yii, and other frameworks easy! You can also run native php.
+
 #### General goals
 - Frameworks a lot - he's one!
 - Everything is easy, nothing to migrate
 - Quickly start of developing locally
 - No overhead on settings! Сopied project and run
 - Zoo under a Docker, let the host mashine remains clean!
+
 #### Video demos (RU)
 - [Presentation](https://youtu.be/qVqzYMczuwM)
 - [PhpStorm + Xdebug + Stacker = profit!](https://youtu.be/RYnRamdZJ-Q)
 - [Console, Composer, Gulp, Npm, Gem, Bower](https://youtu.be/WBFMs35ucfk)
 - [Run Symfony, Laravel and native PHP scripts](https://youtu.be/TONMezpUqkc)
+
 #### Why stacker?
 Stacker - This is a local environment for web development with everything you need. What is its benefit?
 1. You do not need to manually configure the web server and add to the hosts, just cloned it and immediately launched it in the browser. It looks so https://youtu.be/42BemUfK5-4
@@ -41,6 +45,7 @@ Stacker - This is a local environment for web development with everything you ne
 - Install [Docker Compose](https://docs.docker.com/compose/install/) > 1.8.0
 
 ## Installation
+
 #### Clone this project: 
 ```sh 
 $ git clone git@github.com:Maxlab/stacker.git
