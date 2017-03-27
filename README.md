@@ -93,7 +93,7 @@ $ cp -R ~/.ssh ~/www/docker/stacker/workspace
 
 ## Console
 - *ZSH* + [oh-my-zsh](http://ohmyz.sh/)
-- For frontend: nodejs, gem, npm, bower, gulp, uglify-js, uglifycss 
+- For frontend: nodejs, gem, npm, webpack, bower, gulp, uglify-js, uglifycss 
 - For backend: composer, php, phpunit, symfony, symfony-autocomplete, Yii2 autocomplete
 
 ## FAQ
