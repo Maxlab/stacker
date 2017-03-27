@@ -77,10 +77,11 @@ RUN apt-get install -y \
         libicu-dev \
         libxslt-dev \
         wget git vim ruby ruby-dev libcurl4-openssl-dev \
-        nodejs \
-        nodejs-legacy \
-        npm \
         mc 
+
+#Install nodejs
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+RUN apt-get install -y nodejs build-essential
 
 # Install OH-MY-ZSH to see pretty terminal and ditch the bash
 RUN apt-get install -y zsh
@@ -90,7 +91,7 @@ RUN curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.s
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install Bower & Grunt
-RUN npm install -g bower gulp uglify-js uglifycss webpack && \
+RUN npm install -g bower gulp uglify-js uglifycss webpack@2.2.* && \
     echo '{ "allow_root": true }' > /root/.bowerrc 
 # Install gem dependencies
 RUN gem install bundler redcarpet rouge sass:3.3.14 hologram:1.3.1
