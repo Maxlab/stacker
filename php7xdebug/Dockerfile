@@ -2,6 +2,11 @@ FROM php:7.1-fpm
 MAINTAINER Stepanov Nikolai <nstepanovdev@gmail.com>
 RUN apt-get update
 
+RUN locale-gen en_US.UTF-8
+ENV LANGUAGE=en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8
+ENV LC_CTYPE=en_US.UTF-8
+ENV LANG=en_US.UTF-8
 
 # INSTALL EXTENSIONS
 

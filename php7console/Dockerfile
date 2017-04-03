@@ -4,8 +4,15 @@ MAINTAINER Stepanov Nikolai <nstepanovdev@gmail.com>
 ENV COMPOSER_HOME=/home/composer/.composer
 ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV ZSH=/home/.oh-my-zsh
-ARG TZ
+ARG TZ=UTC
+ENV TZ ${TZ}
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+RUN locale-gen en_US.UTF-8
+ENV LANGUAGE=en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8
+ENV LC_CTYPE=en_US.UTF-8
+ENV LANG=en_US.UTF-8
 
 RUN apt-get update
 
