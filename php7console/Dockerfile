@@ -1,5 +1,6 @@
 FROM php:7.1-fpm
 MAINTAINER Stepanov Nikolai <nstepanovdev@gmail.com>
+RUN apt-get update
 
 ENV COMPOSER_HOME=/home/composer/.composer
 ENV COMPOSER_ALLOW_SUPERUSER=1
@@ -8,13 +9,9 @@ ARG TZ=UTC
 ENV TZ ${TZ}
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
+# Install locale
+RUN apt-get install -f -y --reinstall locales
 RUN locale-gen en_US.UTF-8
-ENV LANGUAGE=en_US.UTF-8
-ENV LC_ALL=en_US.UTF-8
-ENV LC_CTYPE=en_US.UTF-8
-ENV LANG=en_US.UTF-8
-
-RUN apt-get update
 
 # INSTALL EXTENSIONS
 
