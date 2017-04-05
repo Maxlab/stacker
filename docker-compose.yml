@@ -3,7 +3,8 @@ version: '2'
 services:
     
     web:
-        build: nginx
+        build:
+            context: ./conf/nginx 
         image: maxlab/nginx
         restart: always
         env_file: .env
@@ -14,8 +15,8 @@ services:
             - redis
             - mailcatcher
         volumes:
-            - ./nginx/nginx:/etc/nginx
-            - ./nginx/nginx/sites-available/vhost/symfony.env.tpl:/tmp/nginx/symfony.env.tpl
+            - ./conf/nginx/conf:/etc/nginx
+            - ./conf/nginx/conf/sites-available/vhost/symfony.env.tpl:/tmp/nginx/symfony.env.tpl
         volumes_from:
             - php7xdebug
         links:
@@ -33,8 +34,8 @@ services:
         ports:
             - 3307:3306
         volumes:
-            - ./mysql/conf:/etc/mysql/conf.d
-            - ./mysql/mysql:/var/lib/mysql
+            - ./conf/mysql/conf:/etc/mysql/conf.d
+            - ./data/mysql:/var/lib/mysql
         restart: always
         
         
@@ -44,7 +45,7 @@ services:
         ports:
             - 5433:5432
         volumes:
-            - ./pgsql/pgsql:/var/lib/postgresql
+            - ./data/pgsql:/var/lib/postgresql
         restart: always
         
         
@@ -52,7 +53,7 @@ services:
         image: redis:3.0
         restart: always
         volumes: 
-            - ./redis/redis:/data
+            - ./data/redis:/data
         ports:
             - 6379:6379
             
@@ -67,7 +68,7 @@ services:
         build:
             args:
                 - TZ=${TZ}
-            context: ./php7console 
+            context: ./conf/php7console 
         container_name: php7console 
         image: maxlab/php7console
         restart: always        
@@ -79,7 +80,7 @@ services:
     php7xdebug:
         env_file: .env
         build:
-            context: ./php7xdebug
+            context: ./conf/php7xdebug
         image: maxlab/php7xdebug
         restart: always
         volumes:
@@ -93,12 +94,13 @@ services:
             
             
     php5apache:
-        build: php5apache
+        build: 
+            context: ./conf/php5apache
         image: maxlab/php5apache
         restart: always        
         volumes:
-            - ./php5apache/conf/apache:/etc/apache2
-            - ./php5apache/conf/php/php.ini:/usr/local/etc/php/conf.d/my.ini
+            - ./conf/php5apache/conf/apache:/etc/apache2
+            - ./conf/php5apache/conf/php/php.ini:/usr/local/etc/php/conf.d/my.ini
         env_file: .env
         volumes_from:
             - php7xdebug
@@ -115,9 +117,10 @@ services:
             
                 
     elasticsearch: 
-        build: elasticsearch
+        build: 
+            context: ./conf/elasticsearch
         volumes:
-            - ./elasticsearch/elasticsearch:/usr/share/elasticsearch/data
+            - ./data/elasticsearch:/usr/share/elasticsearch/data
         ports:
             - "9200:9200"
             - "9300:9300"
