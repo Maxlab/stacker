@@ -8,15 +8,12 @@ ENV dir /data
 ENV HOME /data
 
 # init
-RUN apt-get update \
-    && rm -rvf /usr/src/php && mkdir /usr/src/php && mkdir /usr/src/php/ext
-
+RUN apt-get update && rm -rvf /usr/src/php && mkdir /usr/src/php && mkdir /usr/src/php/ext
 
 # INSTALL EXTENSIONS
 
 # bz2
-RUN apt-get install -y libbz2-dev
-RUN docker-php-ext-install bz2
+RUN apt-get install -y libbz2-dev && docker-php-ext-install bz2
 
 # gd
 RUN apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng12-dev
@@ -24,22 +21,17 @@ RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-di
 RUN docker-php-ext-install gd
 
 # mcrypt
-RUN apt-get install -y libmcrypt-dev
-RUN docker-php-ext-install mcrypt
+RUN apt-get install -y libmcrypt-dev && docker-php-ext-install mcrypt
 
 # pdo
 RUN docker-php-ext-install pdo_mysql  \
     && apt-get install -y libpq-dev \
     && docker-php-ext-install pdo_pgsql \
     && apt-get install -y libsqlite3-dev \
-    && docker-php-ext-install pdo_sqlite
-
-RUN docker-php-ext-install mysql
-
+    && docker-php-ext-install pdo_sqlite mysql
 
 # apcu
-RUN pecl install APCu-4.0.10 \
-	&& docker-php-ext-enable apcu
+RUN pecl install APCu-4.0.10 && docker-php-ext-enable apcu
 
 # phpredis
 ENV PHPREDIS_VERSION 2.2.7
@@ -50,17 +42,14 @@ RUN curl -L -o /tmp/redis.tar.gz https://github.com/phpredis/phpredis/archive/$P
     && docker-php-ext-install redis
 
 # xsl
-RUN apt-get install -y libxslt-dev
-RUN docker-php-ext-install xsl
+RUN apt-get install -y libxslt-dev && docker-php-ext-install xsl
 
 # intl
 RUN apt-get install -y libicu-dev
-RUN pecl install intl
-RUN docker-php-ext-install intl
+RUN pecl install intl && docker-php-ext-install intl
 
 # zip
-RUN apt-get install -y zlib1g-dev \
-    && docker-php-ext-install zip
+RUN apt-get install -y zlib1g-dev && docker-php-ext-install zip
 
 # xdebug
 RUN pecl install xdebug \
@@ -73,7 +62,6 @@ RUN pecl install xdebug \
 
 # common
 RUN docker-php-ext-install opcache calendar dba pcntl bcmath mbstring xmlrpc ftp shmop mysqli
-
 RUN apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
@@ -90,7 +78,7 @@ RUN apt-get install -y \
 # Clean apt
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-
+# Set settings
 CMD "/bin/bash"
 RUN usermod -u 1000 -d /data -s /bin/bash www-data
 RUN rm -rvf /data && mkdir /data && chmod -R 777 /data && find /data -type d -exec chmod 777 {} \;

@@ -3,8 +3,11 @@ MAINTAINER Stepanov Nikolai <nstepanovdev@gmail.com>
 RUN apt-get update
 
 # Install locale
-RUN apt-get install -f -y --reinstall locales
-RUN locale-gen en_US.UTF-8
+ARG TZ=UTC
+ENV TZ ${TZ}
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
+    && apt-get install -f -y --reinstall locales && locale-gen en_US.UTF-8
+
 
 # INSTALL EXTENSIONS
 
