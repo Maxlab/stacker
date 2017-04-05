@@ -9,7 +9,7 @@ CMD "/bin/bash"
 RUN usermod -u 1000 -d /data -s /bin/bash www-data
 RUN mkdir /data && chmod -R 775 /data && find /data -type d -exec chmod 775 {} \;
 
-COPY nginx /etc/nginx
+COPY conf /etc/nginx
 
 WORKDIR /data
 CMD ["nginx"]
