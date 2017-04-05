@@ -5,13 +5,12 @@ RUN apt-get update
 ENV COMPOSER_HOME=/home/composer/.composer
 ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV ZSH=/home/.oh-my-zsh
-ARG TZ=UTC
-ENV TZ ${TZ}
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # Install locale
-RUN apt-get install -f -y --reinstall locales
-RUN locale-gen en_US.UTF-8
+ARG TZ=UTC
+ENV TZ ${TZ}
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
+    && apt-get install -f -y --reinstall locales && locale-gen en_US.UTF-8
 
 # INSTALL EXTENSIONS
 
