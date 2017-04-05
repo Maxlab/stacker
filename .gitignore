@@ -3,3 +3,4 @@ mysql/mysql
 .idea/
 pgsql/pgsql
 elasticsearch/elasticsearch
+/data/*
