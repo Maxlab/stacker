@@ -1,5 +1,6 @@
+.idea/
 workspace
 mysql/mysql
-.idea/
 pgsql/pgsql
+redis/redis
 elasticsearch/elasticsearch
