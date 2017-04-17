@@ -19,7 +19,7 @@ Stacker - This is a local environment for web development with everything you ne
 5. It is faster analogs, the same homestead is just a turtle compared to it
 6. There is a [video course](https://www.youtube.com/playlist?list=PLD8VGB8i9TYha8YOd-deV6bX5hZco0ZGy)
 7. Friendly author, in case there are questions or suggestions
-8. Based on Docker. Wherever you can install Docker, you can install and Stacker
+8. Based on Docker. Wherever you can install Docker, you can install Stacker
 9. It is very simple to expand. The process of adding your own images with a couple of lines in docker-compose.yml
 10. Just try it!
 
@@ -95,6 +95,7 @@ $ cp -R ~/.ssh ~/www/docker/stacker/workspace
 - *ZSH* + [oh-my-zsh](http://ohmyz.sh/)
 - For frontend: nodejs, gem, npm, webpack, bower, gulp, uglify-js, uglifycss 
 - For backend: composer, php, phpunit, symfony, symfony-autocomplete, Yii2 autocomplete
+- For automation deploy: dep ([Deployer](http://deployer.org/))
 
 ## FAQ
 

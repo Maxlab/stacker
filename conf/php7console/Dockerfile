@@ -104,8 +104,8 @@ RUN curl https://getcomposer.org/installer | php -- && mv composer.phar /usr/loc
 ENV PATH /home/composer/.composer/vendor/bin:$PATH
 
 #PHPUNIT
-RUN composer global require "phpunit/phpunit"
-RUN ln -s /home/composer/.composer/vendor/bin/phpunit /usr/local/bin/phpunit
+RUN composer global require "phpunit/phpunit" && \
+    ln -s /home/composer/.composer/vendor/bin/phpunit /usr/local/bin/phpunit
 
 #Laravel
 RUN composer global require "laravel/installer"
@@ -119,6 +119,10 @@ RUN chmod a+x /usr/local/bin/symfony
 RUN composer global require "bamarni/symfony-console-autocomplete"
 RUN ln -s /home/composer/.composer/vendor/bin/symfony-autocomplete /usr/local/bin/symfony-autocomplete
 
+#DEPLOYER.ORG
+RUN curl -LO https://deployer.org/deployer.phar && \
+    mv deployer.phar /usr/local/bin/dep && \
+    chmod +x /usr/local/bin/dep
 
 COPY etc/php-fpm.conf /usr/local/etc/
 COPY etc/php.ini /usr/local/etc/php/
