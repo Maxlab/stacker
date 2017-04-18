@@ -53,7 +53,7 @@ $ git clone git@github.com:Maxlab/stacker.git
 #### Run in Stacker directory 
 ```sh 
 # make ./workspace folder and make a symbolic link to your folder with all your projects 
-$ mkdir workspace && ln -s /your_path/to_all_your_own_projects ./workspace
+$ ln -s /your_path/to_all_your_own_projects ./workspace
 $ docker-compose build && docker-compose up -d && docker-compose ps
 $ \*.dev > 127.0.0.1 # if you use boot2docker, use that ip
 $ sudo apt-get update && sudo apt-get install dnsmasq
