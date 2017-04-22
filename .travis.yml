@@ -19,6 +19,7 @@ before_install:
   - source ~/.bashrc
 
 script:
+  - cp .env.dist .env
   - stacker build
   - stacker up
   - stacker ps
