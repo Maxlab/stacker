@@ -61,4 +61,5 @@ RUN chmod ugo+rX -R /usr/local/etc/php
 RUN echo "" >> /etc/ssh/ssh_config && echo "IdentityFile /data/.ssh/id_rsa" >> /etc/ssh/ssh_config
 
 WORKDIR /data
+
 CMD ["php-fpm"]
