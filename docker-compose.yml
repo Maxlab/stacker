@@ -45,7 +45,7 @@ services:
         ports:
             - 5433:5432
         volumes:
-            - ./data/pgsql:/var/lib/postgresql
+            - ./data/pgsql:/var/lib/postgresql/data
         restart: always
         
         
