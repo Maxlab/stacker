@@ -1,3 +1,4 @@
 workspace
 .idea/
 /data/*
+.env
