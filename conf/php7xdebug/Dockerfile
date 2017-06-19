@@ -38,7 +38,7 @@ RUN apt-get update \
     && rm -rf /tmp/pear \
     && echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini \
     # intl
-    && pecl install intl && docker-php-ext-install intl \
+    && docker-php-ext-configure intl && docker-php-ext-install intl \
     # xdebug
     && pecl install xdebug \
     && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)\n" >> /usr/local/etc/php/conf.d/xdebug.ini \
