@@ -68,11 +68,8 @@ RUN groupadd -r node && \
     usermod -G www-data -a node
     
 RUN mkdir /data && chmod -R 644 /data && find /data -type d -exec chmod 755 {} \;
-RUN apt-get update
-RUN apt-get install -y --fix-missing \
-        build-essential chrpath libxft-dev \
-        libfreetype6 libfreetype6-dev \
-        libfontconfig1 libfontconfig1-dev \
+RUN apt-get install -y \
+        libfreetype6-dev \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
         libpng12-dev \
@@ -83,7 +80,7 @@ RUN apt-get install -y --fix-missing \
         libicu-dev \
         libxslt-dev \
         wget git vim ruby ruby-dev libcurl4-openssl-dev \
-        mc
+        mc 
 
 #Install nodejs
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
@@ -101,10 +98,6 @@ RUN npm install -g bower gulp uglify-js uglifycss webpack@2.2.* && \
     echo '{ "allow_root": true }' > /root/.bowerrc 
 # Install gem dependencies
 RUN gem install bundler redcarpet rouge sass:3.3.14 hologram:1.3.1
-
-#PhantomJS
-RUN wget https://github.com/Medium/phantomjs/releases/download/v2.1.1/phantomjs-2.1.1-linux-x86_64.tar.bz2
-RUN tar xvjf phantomjs-2.1.1-linux-x86_64.tar.bz2 && mv phantomjs-2.1.1-linux-x86_64 /usr/local/share && ln -sf /usr/local/share/phantomjs-2.1.1-linux-x86_64/bin/phantomjs /usr/local/bin
 
 #COMPOSER
 RUN curl https://getcomposer.org/installer | php -- && mv composer.phar /usr/local/bin/composer && chmod +x /usr/local/bin/composer
