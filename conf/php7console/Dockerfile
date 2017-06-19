@@ -48,9 +48,11 @@ RUN apt-get install -y libxslt-dev
 RUN docker-php-ext-install xsl
 
 # intl
-RUN apt-get install -y libicu-dev
-RUN pecl install intl
+RUN apt-get update && apt-get install -y zlib1g-dev libicu-dev g++
+RUN docker-php-ext-configure intl
 RUN docker-php-ext-install intl
+#RUN pecl install intl
+#RUN docker-php-ext-install intl
 
 # zip
 RUN apt-get install -y zlib1g-dev \
