@@ -113,7 +113,7 @@ $ cp -R ~/.ssh ~/www/docker/stacker/workspace
         database_name: sf
         database_user: root
         database_password: root
-    
+
       # Example for pgsql
       parameters:
         database_host: pgsql
@@ -133,28 +133,90 @@ $ cp -R ~/.ssh ~/www/docker/stacker/workspace
     For example, MySQL listens to port 3306 + 1 = 3307 and so on...
 - Check the file [docker-compose.yml](/docker-compose.yml) for more 
 
-#### How to Configure local wildcard DNS server (for linux)
-- Install Dnsmasq:
-```sh
-$ sudo apt-get install dnsmasq
-```
-- Since Ubuntu's Network Manager uses Dnsmasq, and since that messes things up a little for us, open up `/etc/NetworkManager/NetworkManager.conf` and comment out (#) the line that:
-```
-# dns=dnsmasq
-```
-Restart NetworkManager afterwards: 
-```sh
-$ sudo restart network-manager
-```
+#### How to Configure local wildcard DNS server
 
-- Make sure Dnsmasq listens to local DNS queries by editing `/etc/dnsmasq.conf`, and adding the line `listen-address=127.0.0.1`
-- Create a new file in `/etc/dnsmasq.d` (eg. `/etc/dnsmasq.d/dev.conf`), and add the line `address=/.dev/127.0.0.1` to have dnsmasq resolve requests for *.dev domains
-- Restart Dnsmasq:
-```sh
-$ sudo /etc/init.d/dnsmasq restart
-```
+- for linux
+
+
+  - Install Dnsmasq:
+  ```sh
+  $ sudo apt-get install dnsmasq
+  ```
+  - Since Ubuntu's Network Manager uses Dnsmasq, and since that messes things up a little for us, open up `/etc/NetworkManager/NetworkManager.conf` and comment out (#) the line that:
+  ```
+  # dns=dnsmasq
+  ```
+  Restart NetworkManager afterwards: 
+  ```sh
+  $ sudo restart network-manager
+  ```
+
+  - Make sure Dnsmasq listens to local DNS queries by editing `/etc/dnsmasq.conf`, and adding the line `listen-address=127.0.0.1`
+  - Create a new file in `/etc/dnsmasq.d` (eg. `/etc/dnsmasq.d/dev.conf`), and add the line `address=/.dev/127.0.0.1` to have dnsmasq resolve requests for *.dev domains
+  - Restart Dnsmasq:
+  ```sh
+  $ sudo /etc/init.d/dnsmasq restart
+  ```
+
+- for mac
+
+  - install Homebrew
+
+    ```sh
+    ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+    ```
+
+  - install Dnsmasq
+
+    ```sh
+    brew install dnsmasq
+    # Copy the default configuration file.
+    cp $(brew list dnsmasq | grep /dnsmasq.conf.example$) /usr/local/etc/dnsmasq.conf
+    # Copy the daemon configuration file into place.
+    sudo cp $(brew list dnsmasq | grep /homebrew.mxcl.dnsmasq.plist$) /Library/LaunchDaemons/
+    # Start Dnsmasq automatically.
+    sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
+    ```
+
+  - config 
+
+    - add new file `/usr/local/etc/resolv.dnsmasq.conf`
+
+    ```
+    #DNS-Server
+    nameserver 8.8.8.8
+    nameserver 8.8.4.4
+    ```
+
+    - edit `dnsmasq.conf`
+
+    ```
+    address=/dev/127.0.0.1
+    resolv-file=/usr/local/etc/resolv.dnsmasq.conf
+    strict-order
+    no-hosts
+    cache-size=32768
+    listen-address=127.0.0.1
+    ```
+
+    - restart Dnsmasq
+
+    ```sh
+    sudo launchctl stop homebrew.mxcl.dnsmasq
+    sudo launchctl start homebrew.mxcl.dnsmasq
+    ```
+
+    - start Dnsmasq automatically
+
+    ```sh
+    sudo cp -fv /usr/local/opt/dnsmasq/*.plist /Library/LaunchDaemons
+    sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
+    ```
+
+  - change your DNS settings in System Preferences
 
 #### Xdebug + PhpStorm configuration 
+
 - Watch [this video](https://youtu.be/RdmcGAAQGfI) (in Russian)
 
 1. Go to Settings -> Languages & Frameworks -> PHP
@@ -163,9 +225,9 @@ $ sudo /etc/init.d/dnsmasq restart
 #### I have a lot of the Symfony project, is it possible to make a symbolic link to them? 
 - Yes! It's much faster and easier, plus no need to move folders from the usual places.
 - In the directory with your projects, create a folder and copy all the projects from the Symfony code. 
-Now, make a link to your directory project in the directory with the Stacker, 
-remove a directory `./workspace` and rename your link to workspace - that's all! 
-Now all your Symfony projects is available from the browser.
+  Now, make a link to your directory project in the directory with the Stacker, 
+  remove a directory `./workspace` and rename your link to workspace - that's all! 
+  Now all your Symfony projects is available from the browser.
 
 #### How to contact the any instances Staker in console?
 You can do so:
