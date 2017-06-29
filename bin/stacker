@@ -2,6 +2,7 @@
 
 init() {
 
+    TZ=0
     DEV_SELF=$(basename $0);
 
     DEV_DIR=$(dirname $0);
