@@ -2,7 +2,6 @@
 
 init() {
 
-    TZ=0
     DEV_SELF=$(basename $0);
 
     DEV_DIR=$(dirname $0);
@@ -12,9 +11,8 @@ init() {
     DEV_SHELL=/bin/zsh;
 
     DEV_COMMANDDIR=${DEV_DIR}/dev_command;
-
+    
     DEV_WORKSPACE="`echo ${DEV_WORKDIR}/workspace | sed -e 's/\\//\\\\\//g'`";
-
     DEV_DATADIR=`echo ${DEV_USERDIR} | sed -e "s/${DEV_WORKSPACE}//"`;
 
     DEV_COMMAND=$1;
