@@ -11,13 +11,13 @@ init() {
     DEV_SHELL=/bin/zsh;
 
     DEV_COMMANDDIR=${DEV_DIR}/dev_command;
-
-    DEV_WORKSPACE="`echo ${DEV_WORKDIR}/workspace | sed -se 's/\\//\\\\\//g'`";
-    DEV_DATADIR=`echo ${DEV_USERDIR} | sed -se "s/${DEV_WORKSPACE}//"`;
+    
+    DEV_WORKSPACE="`echo ${DEV_WORKDIR}/workspace | sed -e 's/\\//\\\\\//g'`";
+    DEV_DATADIR=`echo ${DEV_USERDIR} | sed -e "s/${DEV_WORKSPACE}//"`;
 
     DEV_COMMAND=$1;
     shift;
-    DEV_COMMAND_OPTIONS=`echo "$*" | sed -se "s/${DEV_WORKSPACE}/\/data/" -se 's/\([\$\\\(\\\)<>]\)/\\\\\1/g'`;
+    DEV_COMMAND_OPTIONS=`echo "$*" | sed -e "s/${DEV_WORKSPACE}/\/data/" -e 's/\([\$\\\(\\\)<>]\)/\\\\\1/g'`;
 
     if [ "${DEV_DATADIR}" == "${DEV_USERDIR}" ]; then
         # Not in WORKSPACE
