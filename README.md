@@ -10,10 +10,13 @@
 
 ## Introduction
 
+- [English](https://github.com/Maxlab/stacker)
+- [简体中文](https://github.com/Maxlab/stacker/blob/master/README_cn.md)
+
 #### Why stacker?
 Stacker - This is a local environment for web development with everything you need. What is its benefit?
 1. You do not need to manually configure the web server and add to the hosts, just cloned it and immediately launched it in the browser. It looks so [demo](https://youtu.be/42BemUfK5-4)
-2. Inside, there is already everything that is needed in 90% of all cases. And if not, we will add it for you)
+2. Inside, there is already everything that is needed in 90% of all cases. And if not, we will add it for you : )
 3. For you, there is a super zsh console with autocomplete and everything you need. Video with [presentation](https://youtu.be/N7HpPoNcaA4?list=PLD8VGB8i9TYha8YOd-deV6bX5hZco0ZGy) 
 4. There is an autocompletion for Symfony and Laravel commands out of the box. For example, la5 and a double tab, will output a list of commands for which you can "walk" with arrows to select them
 5. It is faster analogs, the same homestead is just a turtle compared to it
@@ -138,7 +141,7 @@ $ cp -R ~/.ssh ~/www/docker/stacker/workspace
 - for linux
 
 
-  - Install Dnsmasq:
+-   Install Dnsmasq:
   ```sh
   $ sudo apt-get install dnsmasq
   ```
