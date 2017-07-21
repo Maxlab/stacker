@@ -53,15 +53,21 @@ $ mkdir workspace && ln -s /your_path/to_all_your_own_projects ./workspace
 # copy .env.dist to .env and change it
 $ cp .env.dist .env
 $ docker-compose build && docker-compose up -d && docker-compose ps
-$ \*.dev > 127.0.0.1 # if you use boot2docker, use that ip
-$ sudo apt-get update && sudo apt-get install dnsmasq
 $ mv ./test ./workspace
-$ service docker restart
 ```
-- 在 `/etc/dnsmasq.d/dev.conf` 文件中添加 `address=/.dev/127.0.0.1`
-- 编辑 `/etc/hosts` 文件：
-  - 添加 `127.0.0.1 test.project.dev` 至尾部
-  - 添加 `127.0.0.1 mail.dev` 至尾部
+#### 设置DNS服务器
+
+```sh
+- Linux
+  /etc/resolv.conf
+- Mac
+  在 系统偏好设置 中
+- Windows
+  在 网络适配器设置 --> TCP/IP协议 中
+```
+
+将你的DNS服务器设置为`127.0.0.1`
+
 - 在浏览器中打开 http://test.php.dev/
 - [示例视频](https://youtu.be/42BemUfK5-4)
 
@@ -86,97 +92,6 @@ $ cp -R ~/.ssh ~/www/docker/stacker/workspace
 - Redis：6379
 - MailCatcher：1025、1080
 - 更多请查看`docker-compose.yml`
-
-#### 怎么配置本地泛域名解析支持
-
-- LInux
-
-  -   安装 Dnsmasq
-
-    ```sh
-    $ sudo apt-get install dnsmasq
-    ```
-
-
--   打开`/etc/NetworkManager/NetworkManager.conf`注释掉一下内容
-
-    ```sh
-    # dns=dnsmasq
-    ```
-
-    重启 network-manager
-
-    ```sh
-    $ sudo restart network-manager
-    ```
-
-
--   确认 `/etc/dnsmasq.conf `文件中有这一行：`listen-address=127.0.0.1`
-
-  - 在 `/etc/dnsmasq.d`文件夹创建一个新文件 （比如 `/etc/dnsmasq.d/dev.conf`）， 将这一行 `address=/.dev/127.0.0.1` 添加进去使 `*.dev` 都解析到 `127.0.0.1` 这个IP。
-
-  - 重启Dnsmasq：
-
-    ```sh
-    $ sudo /etc/init.d/dnsmasq restart
-    ```
-
-- Mac
-
-  - 安装 Homebrew
-
-    ```sh
-    ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
-    ```
-
-  - 安装 Dnsmasq
-
-    ```sh
-    brew install dnsmasq
-    # Copy the default configuration file.
-    cp $(brew list dnsmasq | grep /dnsmasq.conf.example$) /usr/local/etc/dnsmasq.conf
-    # Copy the daemon configuration file into place.
-    sudo cp $(brew list dnsmasq | grep /homebrew.mxcl.dnsmasq.plist$) /Library/LaunchDaemons/
-    # Start Dnsmasq automatically.
-    sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
-    ```
-
-  - 配置 
-
-    - 添加文件 `/usr/local/etc/resolv.dnsmasq.conf`
-
-    ```
-    #DNS-Server
-    nameserver 8.8.8.8
-    nameserver 8.8.4.4
-    ```
-
-    - 编辑 `dnsmasq.conf`
-
-    ```
-    address=/dev/127.0.0.1
-    resolv-file=/usr/local/etc/resolv.dnsmasq.conf
-    strict-order
-    no-hosts
-    cache-size=32768
-    listen-address=127.0.0.1
-    ```
-
-    - 重新启动 Dnsmasq
-
-    ```sh
-    sudo launchctl stop homebrew.mxcl.dnsmasq
-    sudo launchctl start homebrew.mxcl.dnsmasq
-    ```
-
-    - 配置 Dnsmasq 自启动
-
-    ```sh
-    sudo cp -fv /usr/local/opt/dnsmasq/*.plist /Library/LaunchDaemons
-    sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
-    ```
-
-  - 在网络中设置中配置你的dns为`127.0.0.1`
 
 #### Xdebug + PhpStorm 配置 
 

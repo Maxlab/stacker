@@ -60,16 +60,24 @@ $ mkdir workspace && ln -s /your_path/to_all_your_own_projects ./workspace
 # copy .env.dist to .env and change it
 $ cp .env.dist .env
 $ docker-compose build && docker-compose up -d && docker-compose ps
-$ \*.dev > 127.0.0.1 # if you use boot2docker, use that ip
-$ sudo apt-get update && sudo apt-get install dnsmasq
 $ mv ./test ./workspace
-$ service docker restart
 ```
-- Add a file `/etc/dnsmasq.d/dev.conf` with `address=/.dev/127.0.0.1`
-- Edit `/etc/hosts` file if you want to use a domain name:
-  - add `127.0.0.1 test.project.dev` to your hosts file `/etc/hosts`
-  - add `127.0.0.1 mail.dev` to your hosts file `/etc/hosts`  
+#### Set local DNS server
+
+```sh
+- Linux
+  /etc/resolv.conf
+- Mac
+  System Settings
+- Windows
+  Network Adapter Setting
+```
+
+set your local dns server to `127.0.0.1` .
+
 - Then open http://test.php.dev/ in your browser
+
+
 - [Examples](https://youtu.be/42BemUfK5-4)
 
 #### For SSH
@@ -77,12 +85,8 @@ Copy your ssh keys in the folder workspace
 ```sh
 $ cp -R ~/.ssh ~/www/docker/stacker/workspace 
 ```
-#### For pure PHP
+#### Move your projects
 - Add your project in workspace folder `./workspace/<customer>/<projectname>` (no need to restart, this will work out of the box)
-- Open http://customer.project.dev/ in your browser (if you do not have dnsmasq, you have to add your hosts file manually)
-
-#### For Symfony2
-- Add your Sf2 project in workspace folder `./workspace/<customer>/<projectname>` (no need to restart, this will work out of the box)
 - Open http://customer.project.dev/ in your browser (if you do not have dnsmasq, you have to add your hosts file manually)
 
 ## On the ship
@@ -92,6 +96,7 @@ $ cp -R ~/.ssh ~/www/docker/stacker/workspace
 - mysql         -> mysql:5.7
 - pgsql         -> postgres:9.6   
 - php7xdebug    -> php:7.1 + xdebug
+- dnsmasq  ->  dnsmasq:latest
 - php5apache    -> php:5apache for legacy
 - php7console   -> stacker console
 - redis         -> redis:3.0
@@ -135,88 +140,6 @@ $ cp -R ~/.ssh ~/www/docker/stacker/workspace
 - It's easy. For convenience, the external ports of the databases are offset by plus one. 
     For example, MySQL listens to port 3306 + 1 = 3307 and so on...
 - Check the file [docker-compose.yml](/docker-compose.yml) for more 
-
-#### How to Configure local wildcard DNS server
-
-- for linux
-
-
--   Install Dnsmasq:
-  ```sh
-  $ sudo apt-get install dnsmasq
-  ```
-  - Since Ubuntu's Network Manager uses Dnsmasq, and since that messes things up a little for us, open up `/etc/NetworkManager/NetworkManager.conf` and comment out (#) the line that:
-  ```
-  # dns=dnsmasq
-  ```
-  Restart NetworkManager afterwards: 
-  ```sh
-  $ sudo restart network-manager
-  ```
-
-  - Make sure Dnsmasq listens to local DNS queries by editing `/etc/dnsmasq.conf`, and adding the line `listen-address=127.0.0.1`
-  - Create a new file in `/etc/dnsmasq.d` (eg. `/etc/dnsmasq.d/dev.conf`), and add the line `address=/.dev/127.0.0.1` to have dnsmasq resolve requests for *.dev domains
-  - Restart Dnsmasq:
-  ```sh
-  $ sudo /etc/init.d/dnsmasq restart
-  ```
-
-- for mac
-
-  - install Homebrew
-
-    ```sh
-    ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
-    ```
-
-  - install Dnsmasq
-
-    ```sh
-    brew install dnsmasq
-    # Copy the default configuration file.
-    cp $(brew list dnsmasq | grep /dnsmasq.conf.example$) /usr/local/etc/dnsmasq.conf
-    # Copy the daemon configuration file into place.
-    sudo cp $(brew list dnsmasq | grep /homebrew.mxcl.dnsmasq.plist$) /Library/LaunchDaemons/
-    # Start Dnsmasq automatically.
-    sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
-    ```
-
-  - config 
-
-    - add new file `/usr/local/etc/resolv.dnsmasq.conf`
-
-    ```
-    #DNS-Server
-    nameserver 8.8.8.8
-    nameserver 8.8.4.4
-    ```
-
-    - edit `dnsmasq.conf`
-
-    ```
-    address=/dev/127.0.0.1
-    resolv-file=/usr/local/etc/resolv.dnsmasq.conf
-    strict-order
-    no-hosts
-    cache-size=32768
-    listen-address=127.0.0.1
-    ```
-
-    - restart Dnsmasq
-
-    ```sh
-    sudo launchctl stop homebrew.mxcl.dnsmasq
-    sudo launchctl start homebrew.mxcl.dnsmasq
-    ```
-
-    - start Dnsmasq automatically
-
-    ```sh
-    sudo cp -fv /usr/local/opt/dnsmasq/*.plist /Library/LaunchDaemons
-    sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
-    ```
-
-  - change your DNS settings in System Preferences
 
 #### Xdebug + PhpStorm configuration 
 
