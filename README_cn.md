@@ -82,16 +82,35 @@ $ cp -R ~/.ssh ~/www/docker/stacker/workspace
 
 ## 常见问题
 
-#### 怎么配置数据库密码？
+#### 怎么设置数据库密码？
 修改`.env`文件里面数据库密码的参数。
 
-#### stacker 的端口号都是什么？
+#### 如何在项目中连接容器？
 
-- MySQL：3307
-- PostgreSQL：5433
-- Redis：6379
-- MailCatcher：1025、1080
-- 更多请查看`docker-compose.yml`
+- 数据库
+
+  ```yaml
+    # Example for mysql
+    parameters:
+      database_host: mysql #主机就填mysql
+      database_port: 3306
+      database_name: sf
+      database_user: root
+      database_password: root
+
+    # Example for pgsql
+    parameters:
+      database_host: pgsql #主机就填pgsql
+      database_port: 5433
+      database_name: sf
+      database_user: postgres
+      database_password: postgres
+    
+    # Example for redis
+    parameters:
+      database_host: redis #主机就填redis
+      database_port: 6379
+  ```
 
 #### Xdebug + PhpStorm 配置 
 
@@ -107,12 +126,8 @@ $ cp -R ~/.ssh ~/www/docker/stacker/workspace
   remove a directory `./workspace` and rename your link to workspace - that's all! 
   Now all your Symfony projects is available from the browser.
 
-#### 怎么连接到 stacker 容器呢？
-你可以这样
-```sh 
-$ /your_path/to_stacker_folder/bin/stacker console
-```
-不过最好将他添加到系统变量中，更加方便。
+#### 怎么使用终端？
+将 stacker 添加到系统变量中，
 ```sh
 # for bash
 $ echo 'export PATH=/your_path/to_stacker_folder/bin:$PATH' >> ~/.bashrc && source ~/.bashrc 
@@ -121,6 +136,11 @@ $ echo 'export PATH=/your_path/to_stacker_folder/bin:$PATH' >> ~/.zshrc && sourc
 # then restart console and run
 $ stacker console
 ```
+然后
+```sh 
+$stacker console
+```
+
 
 #### Symfony completion
 ```sh
