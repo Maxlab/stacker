@@ -73,7 +73,7 @@ $ mv ./test ./workspace
   Network Adapter Setting
 ```
 
-set your local dns server to `127.0.0.1` .
+set your local dns server to `127.0.0.1` , to prevent dnsmasq from running, you need to **set up the second DNS server**. Such as 8.8.8.8 or something else.
 
 - Then open http://test.php.dev/ in your browser
 
