@@ -66,7 +66,7 @@ $ mv ./test ./workspace
   在 网络适配器设置 --> TCP/IP协议 中
 ```
 
-将你的DNS服务器设置为`127.0.0.1`
+将你的DNS服务器设置为`127.0.0.1`，为了防止dnsmasq出现故障，你必须设置第二dns服务器，比如114.114.114.114或者其他。
 
 - 在浏览器中打开 http://test.php.dev/
 - [示例视频](https://youtu.be/42BemUfK5-4)
