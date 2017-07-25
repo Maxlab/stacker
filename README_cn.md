@@ -8,36 +8,34 @@
 [![License](https://poser.pugx.org/maxlab/stacker/license)](https://packagist.org/packages/maxlab/stacker)
 [![Latest Unstable Version](https://poser.pugx.org/maxlab/stacker/v/unstable)](https://packagist.org/packages/maxlab/stacker)
 
-## 简介
+# Stacker
 
 - [English](https://github.com/Maxlab/stacker)
 - [简体中文](https://github.com/Maxlab/stacker/blob/master/README_cn.md)
 
-#### 为什么选择 stacker?
-Stacker - 满足你 Web 开发的所有需要，让你像着魔一般爱上stacker。
+#### Stacker 是什么?
+Stacker 是一个 Docker 项目，几乎包含了 Web 开发的所有环境 Node.js、PHP、MySQL、PostgreSQL、Redis、Elasticsearch等等。
 
-- **包含Web开发需要的一切**
-  - 后端开发：MySQL & PostgreSQL 、Nginx & Apache、PHP 7&5、xdebug、Redis、Elasticsearch
-  - 前端开发：nodejs, gem, npm, webpack, bower, gulp, uglify-js, uglifycss
-  - 其他工具：
-    - MailCatcher
-      - 可以方便的本地调试验证邮件之类的东西，无需使用`mailtrap`之类的服务。
-      - 所有外发邮件会发送至 http://mail.dev/
-    - 自动部署：[dep](https://deployer.org/)
-    - 容器终端采用的是 *ZSH* + [oh-my-zsh](http://ohmyz.sh/)
+#### Stacker 特色功能？
 
-- 快捷的管理命令
+- **邮件外发调试**
 
-  请看下面常见问题中的 “**怎么连接到 stacker 容器**” 然后才可使用 `stacker` 命令。
+  将你的应用的发信服务器设置为 `mailcatcher` ，端口设置为 `1025` 就可以在 http://mail.dev 中查看应用发出的邮件啦
 
-  - stacker [ps build down up start stop logs … ]
-    - 查看日志 `stacker logs -f`
+- **使用PHPStorm调试PHP应用**
 
-## 系统需求
-- 已安装 [Docker](https://docs.docker.com/)
-- 已安装 [Docker Compose](https://docs.docker.com/compose/install/) > 1.8.0
+  - 查看 [视频](https://youtu.be/RdmcGAAQGfI) 教程 (俄语)
+
+  1. Go to Settings -> Languages & Frameworks -> PHP
+  2. Click the ... behind your interperter
+
+- **绿色便携的 PHP & Node 终端**
+
+  宿主机无需安装 PHP 及 Node.js 即可使用 `stacker console` 在你的项目中执行 `php hello.php` 和 `ndoe hello.js` 。
 
 ## 安装
+
+安装之前请先安装 [Docker](https://docker.com) 。
 
 #### 获取 stacker ： 
 ```sh 
@@ -111,13 +109,6 @@ $ cp -R ~/.ssh ~/www/docker/stacker/workspace
       database_host: redis #主机就填redis
       database_port: 6379
   ```
-
-#### Xdebug + PhpStorm 配置 
-
-- Watch [this video](https://youtu.be/RdmcGAAQGfI) (in Russian)
-
-1. Go to Settings -> Languages & Frameworks -> PHP
-2. Click the ... behind your interperter
 
 #### I have a lot of the Symfony project, is it possible to make a symbolic link to them? 
 - Yes! It's much faster and easier, plus no need to move folders from the usual places.
