@@ -97,7 +97,6 @@ services:
         build:
             context: ./conf/dnsmasq
         ports:
-            - "53:53"
             - "53:53/udp"
         cap_add:  
             - NET_ADMIN
