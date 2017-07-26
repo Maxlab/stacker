@@ -87,6 +87,12 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY etc/php-fpm.conf /usr/local/etc/
 COPY etc/php.ini /usr/local/etc/php/
+
+# Put host's IP to php.ini
+ARG HOSTIP=127.0.0.1
+ENV HOSTIP ${HOSTIP}
+RUN echo xdebug.remote_host=$HOSTIP>>/usr/local/etc/php/conf.d/xdebug.ini
+
 RUN chmod ugo+rX -R /usr/local/etc/php
 
 # SSH
