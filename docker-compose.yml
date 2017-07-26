@@ -81,6 +81,9 @@ services:
     php7xdebug:
         env_file: .env
         build:
+            args:
+                - TZ=${TZ}
+                - HOSTIP=${HOSTIP}
             context: ./conf/php7xdebug
         image: maxlab/php7xdebug
         restart: always
