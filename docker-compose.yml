@@ -97,12 +97,16 @@ services:
             - elasticsearch
 
     dnsmasq:
+        env_file: .env
         build:
+            args:
+                - DNS1=${DNS1}
+                - DNS2=${DNS2}
             context: ./conf/dnsmasq
         ports:
             - "53:53"
             - "53:53/udp"
-        cap_add:  
+        cap_add:
             - NET_ADMIN
         restart: always
             
