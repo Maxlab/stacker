@@ -30,6 +30,7 @@ services:
         
     mysql:
         image: mysql:5.7
+        container_name: mysql
         env_file: .env
         ports:
             - 3307:3306
@@ -70,6 +71,9 @@ services:
                 - TZ=${TZ}
             context: ./conf/php7console 
         container_name: php7console 
+        dns:
+            - ${DNS1}
+            - ${DNS2}
         image: maxlab/php7console
         restart: always        
         volumes_from:
@@ -80,8 +84,14 @@ services:
     php7xdebug:
         env_file: .env
         build:
+            args:
+                - TZ=${TZ}
+                - HOSTIP=${HOSTIP}
             context: ./conf/php7xdebug
         image: maxlab/php7xdebug
+        dns:
+            - ${DNS1}
+            - ${DNS2}
         restart: always
         volumes:
             - ./workspace:/data
@@ -93,12 +103,16 @@ services:
             - elasticsearch
 
     dnsmasq:
+        env_file: .env
         build:
+            args:
+                - DNS1=${DNS1}
+                - DNS2=${DNS2}
             context: ./conf/dnsmasq
         ports:
             - "53:53"
             - "53:53/udp"
-        cap_add:  
+        cap_add:
             - NET_ADMIN
         restart: always
             
