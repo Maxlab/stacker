@@ -8,36 +8,34 @@
 [![License](https://poser.pugx.org/maxlab/stacker/license)](https://packagist.org/packages/maxlab/stacker)
 [![Latest Unstable Version](https://poser.pugx.org/maxlab/stacker/v/unstable)](https://packagist.org/packages/maxlab/stacker)
 
-## 简介
+# Stacker
 
 - [English](https://github.com/Maxlab/stacker)
 - [简体中文](https://github.com/Maxlab/stacker/blob/master/README_cn.md)
 
-#### 为什么选择 stacker?
-Stacker - 满足你 Web 开发的所有需要，让你像着魔一般爱上stacker。
+#### Stacker 是什么?
+Stacker 是一个 Docker 项目，几乎包含了 Web 开发的所有环境 Node.js、PHP、MySQL、PostgreSQL、Redis、Elasticsearch等等。
 
-- **包含Web开发需要的一切**
-  - 后端开发：MySQL & PostgreSQL 、Nginx & Apache、PHP 7&5、xdebug、Redis、Elasticsearch
-  - 前端开发：nodejs, gem, npm, webpack, bower, gulp, uglify-js, uglifycss
-  - 其他工具：
-    - MailCatcher
-      - 可以方便的本地调试验证邮件之类的东西，无需使用`mailtrap`之类的服务。
-      - 所有外发邮件会发送至 http://mail.dev/
-    - 自动部署：[dep](https://deployer.org/)
-    - 容器终端采用的是 *ZSH* + [oh-my-zsh](http://ohmyz.sh/)
+#### Stacker 特色功能？
 
-- 快捷的管理命令
+- **邮件外发调试**
 
-  请看下面常见问题中的 “**怎么连接到 stacker 容器**” 然后才可使用 `stacker` 命令。
+  将你的应用的发信服务器设置为 `mailcatcher` ，端口设置为 `1025` 就可以在 http://mail.dev 中查看应用发出的邮件啦
 
-  - stacker [ps build down up start stop logs … ]
-    - 查看日志 `stacker logs -f`
+- **使用PHPStorm调试PHP应用**
 
-## 系统需求
-- 已安装 [Docker](https://docs.docker.com/)
-- 已安装 [Docker Compose](https://docs.docker.com/compose/install/) > 1.8.0
+  - 查看 [视频](https://youtu.be/RdmcGAAQGfI) 教程 (俄语)
+
+  1. Go to Settings -> Languages & Frameworks -> PHP
+  2. Click the ... behind your interperter
+
+- **绿色便携的 PHP & Node 终端**
+
+  宿主机无需安装 PHP 及 Node.js 即可使用 `stacker console` 在你的项目中执行 `php hello.php` 和 `ndoe hello.js` 。
 
 ## 安装
+
+安装之前请先安装 [Docker](https://docker.com) 。
 
 #### 获取 stacker ： 
 ```sh 
@@ -66,7 +64,7 @@ $ mv ./test ./workspace
   在 网络适配器设置 --> TCP/IP协议 中
 ```
 
-将你的DNS服务器设置为`127.0.0.1`
+将你的DNS服务器设置为`127.0.0.1`，为了防止dnsmasq出现故障，你必须设置第二dns服务器，比如114.114.114.114或者其他。
 
 - 在浏览器中打开 http://test.php.dev/
 - [示例视频](https://youtu.be/42BemUfK5-4)
@@ -82,23 +80,35 @@ $ cp -R ~/.ssh ~/www/docker/stacker/workspace
 
 ## 常见问题
 
-#### 怎么配置数据库密码？
+#### 怎么设置数据库密码？
 修改`.env`文件里面数据库密码的参数。
 
-#### stacker 的端口号都是什么？
+#### 如何在项目中连接容器？
 
-- MySQL：3307
-- PostgreSQL：5433
-- Redis：6379
-- MailCatcher：1025、1080
-- 更多请查看`docker-compose.yml`
+- 数据库
 
-#### Xdebug + PhpStorm 配置 
+  ```yaml
+    # Example for mysql
+    parameters:
+      database_host: mysql #主机就填mysql
+      database_port: 3306
+      database_name: sf
+      database_user: root
+      database_password: root
 
-- Watch [this video](https://youtu.be/RdmcGAAQGfI) (in Russian)
-
-1. Go to Settings -> Languages & Frameworks -> PHP
-2. Click the ... behind your interperter
+    # Example for pgsql
+    parameters:
+      database_host: pgsql #主机就填pgsql
+      database_port: 5433
+      database_name: sf
+      database_user: postgres
+      database_password: postgres
+    
+    # Example for redis
+    parameters:
+      database_host: redis #主机就填redis
+      database_port: 6379
+  ```
 
 #### I have a lot of the Symfony project, is it possible to make a symbolic link to them? 
 - Yes! It's much faster and easier, plus no need to move folders from the usual places.
@@ -107,12 +117,8 @@ $ cp -R ~/.ssh ~/www/docker/stacker/workspace
   remove a directory `./workspace` and rename your link to workspace - that's all! 
   Now all your Symfony projects is available from the browser.
 
-#### 怎么连接到 stacker 容器呢？
-你可以这样
-```sh 
-$ /your_path/to_stacker_folder/bin/stacker console
-```
-不过最好将他添加到系统变量中，更加方便。
+#### 怎么使用终端？
+将 stacker 添加到系统变量中，
 ```sh
 # for bash
 $ echo 'export PATH=/your_path/to_stacker_folder/bin:$PATH' >> ~/.bashrc && source ~/.bashrc 
@@ -121,6 +127,11 @@ $ echo 'export PATH=/your_path/to_stacker_folder/bin:$PATH' >> ~/.zshrc && sourc
 # then restart console and run
 $ stacker console
 ```
+然后
+```sh 
+$stacker console
+```
+
 
 #### Symfony completion
 ```sh
