@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
     
@@ -17,8 +17,7 @@ services:
         volumes:
             - ./conf/nginx/conf:/etc/nginx
             - ./conf/nginx/conf/sites-available/vhost/symfony.env.tpl:/tmp/nginx/symfony.env.tpl
-        volumes_from:
-            - php7xdebug
+            - ./workspace:/data
         links:
             - php7xdebug:fpm7
             - mailcatcher
@@ -71,15 +70,14 @@ services:
                 - TZ=${TZ}
             context: ./conf/php7console 
         container_name: php7console 
+        image: maxlab/php7console
         dns:
             - ${DNS1}
             - ${DNS2}
-        image: maxlab/php7console
-        restart: always        
-        volumes_from:
-            - php7xdebug 
+        restart: always
+        volumes:
+            - ./workspace:/data
         tty: true
-        
         
     php7xdebug:
         env_file: .env
@@ -115,37 +113,12 @@ services:
         cap_add:
             - NET_ADMIN
         restart: always
-            
-            
-    php5apache:
-        build: 
-            context: ./conf/php5apache
-        image: maxlab/php5apache
-        restart: always        
-        volumes:
-            - ./conf/php5apache/conf/apache:/etc/apache2
-            - ./conf/php5apache/conf/php/php.ini:/usr/local/etc/php/conf.d/my.ini
-        env_file: .env
-        volumes_from:
-            - php7xdebug
-        depends_on:
-            - mysql
-            - redis
-            - mailcatcher
-        links:
-            - php7xdebug:fpm7
-            - mailcatcher
-        ports:
-            - 81:80
-            - 444:443
-            
                 
     elasticsearch: 
-        build: 
-            context: ./conf/elasticsearch
+        image: sebp/elk:551
         volumes:
-            - ./data/elasticsearch:/usr/share/elasticsearch/data
+            - ./data/elasticsearch:/var/lib/elasticsearch
         ports:
             - "9200:9200"
-            - "9300:9300"
-        tty: true
+            - "5601:5601"
+            - "5044:5044"
