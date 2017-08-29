@@ -7,4 +7,5 @@ if [ -n "${DEV_DATADIR}" ]; then
     DEV_CMD="cd ${DEV_DATADIR} && php";
 fi
 
-DEV_CMD='/bin/bash -c "'"${DEV_CMD} ${DEV_COMMAND_OPTIONS}"'"';
+cd ${DEV_WORKDIR}&&docker-compose run --rm -u www-data php7xdebug bash -c "${DEV_CMD} ${DEV_COMMAND_OPTIONS}"
+exit $?
