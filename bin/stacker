@@ -55,7 +55,8 @@ exec() {
     if [ "$DEV_COMMAND" == "console" ]; then
         eval docker exec -ti -u www-data ${DEV_USER}${DEV_SERVICE} ${DEV_CMD};  
     else
-        eval docker-compose run --rm ${DEV_USER}${DEV_SERVICE} ${DEV_CMD};
+        echo docker-compose run --rm ${DEV_USER}${DEV_SERVICE} ${DEV_CMD}
+        eval cd ${DEV_WORKDIR} && docker-compose run --rm ${DEV_USER}${DEV_SERVICE} ${DEV_CMD};
     fi
 
     exit $?;
