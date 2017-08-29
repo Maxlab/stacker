@@ -6,6 +6,7 @@ init() {
 
     DEV_DIR=$(dirname $0);
     DEV_WORKDIR=$(dirname ${DEV_DIR});
+    source $DEV_WORKDIR/.env
     DEV_PROJECT=$(basename ${DEV_WORKDIR});
     DEV_USERDIR=${PWD};
     DEV_SHELL=/bin/zsh;
