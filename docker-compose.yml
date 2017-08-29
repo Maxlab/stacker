@@ -17,7 +17,7 @@ services:
         volumes:
             - ./conf/nginx/conf:/etc/nginx
             - ./conf/nginx/conf/sites-available/vhost/symfony.env.tpl:/tmp/nginx/symfony.env.tpl
-            - php7xdebug:/data
+            - ./workspace:/data
         links:
             - php7xdebug:fpm7
             - mailcatcher
@@ -76,7 +76,7 @@ services:
             - ${DNS2}
         restart: always
         volumes:
-            - php7xdebug:/data
+            - ./workspace:/data
         tty: true
         
     php7xdebug:
@@ -122,6 +122,3 @@ services:
             - "9200:9200"
             - "5601:5601"
             - "5044:5044"
-
-volumes:
-    php7xdebug:
