@@ -1,6 +1,7 @@
 FROM alpine:latest
 MAINTAINER Naiwa(vc@nic.com.gy)
 
+EXPOSE 53 53/udp
 RUN apk --no-cache add dnsmasq
 COPY dnsmasq.conf /etc/dnsmasq.conf
 
