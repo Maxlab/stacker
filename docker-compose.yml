@@ -115,14 +115,13 @@ services:
         restart: always
                 
     elasticsearch: 
-        build: 
-            context: ./conf/elasticsearch
+        image: sebp/elk:551
         volumes:
-            - ./data/elasticsearch:/usr/share/elasticsearch/data
+            - ./data/elasticsearch:/var/lib/elasticsearch
         ports:
             - "9200:9200"
-            - "9300:9300"
-        tty: true
+            - "5601:5601"
+            - "5044:5044"
 
 volumes:
     php7xdebug:
