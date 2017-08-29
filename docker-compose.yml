@@ -79,7 +79,6 @@ services:
             - php7xdebug:/data
         tty: true
         
-        
     php7xdebug:
         env_file: .env
         build:
@@ -114,30 +113,6 @@ services:
         cap_add:
             - NET_ADMIN
         restart: always
-            
-            
-    php5apache:
-        build: 
-            context: ./conf/php5apache
-        image: maxlab/php5apache
-        restart: always        
-        volumes:
-            - ./conf/php5apache/conf/apache:/etc/apache2
-            - ./conf/php5apache/conf/php/php.ini:/usr/local/etc/php/conf.d/my.ini
-        env_file: .env
-        volumes:
-            - php7xdebug:/data
-        depends_on:
-            - mysql
-            - redis
-            - mailcatcher
-        links:
-            - php7xdebug:fpm7
-            - mailcatcher
-        ports:
-            - 81:80
-            - 444:443
-            
                 
     elasticsearch: 
         build: 
