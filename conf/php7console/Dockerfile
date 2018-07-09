@@ -74,7 +74,7 @@ RUN apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
-        libpng12-dev \
+        libpng-dev \
         msmtp \
         imagemagick \
         libssl-dev \
