@@ -59,6 +59,7 @@ RUN apt-get install -y zlib1g-dev \
     && docker-php-ext-install zip
 
 # common
+RUN apt-get install -y libssl-dev
 RUN docker-php-ext-install opcache calendar dba pcntl bcmath mbstring xmlrpc ftp shmop
 
 # preconf enviroment
