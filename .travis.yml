@@ -2,7 +2,7 @@ group: deprecated-2017Q2
 sudo: required
 
 env:
-  DOCKER_COMPOSE_VERSION: 1.8.0
+  DOCKER_COMPOSE_VERSION: 1.21.2
 
 services:
   - docker
