@@ -85,6 +85,7 @@ RUN apt-get install -y \
         mc 
 
 #Install nodejs
+RUN apt-get install -y gnupg
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get install -y nodejs build-essential
 
