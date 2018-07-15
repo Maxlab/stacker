@@ -61,6 +61,7 @@ RUN pecl install xdebug \
     && echo "xdebug.remote_connect_back=0" >> /usr/local/etc/php/conf.d/xdebug.ini
 
 # common
+RUN apt-get install -y libssl-dev
 RUN docker-php-ext-install opcache calendar dba pcntl bcmath mbstring xmlrpc ftp shmop mysqli
 
 
